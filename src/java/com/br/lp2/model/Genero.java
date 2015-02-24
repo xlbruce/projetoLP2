@@ -14,4 +14,26 @@ import java.io.Serializable;
  */
 public class Genero implements Serializable {
     
+    private transient int px;
+    private String nome;
+
+    public Genero(String nome) {
+        this.nome = nome;
+    }
+    
+    /**
+     * Cria uma instancia com chave primária.
+     * @param px
+     * @param nome 
+     */
+    public Genero(int px, String nome) {
+        this.px = px;
+        this.nome = nome;
+    }
+
+    @Override
+    public String toString() {
+        return "Genero{" + "px=" + px + ", nome=" + nome + '}';
+    }
+    
 }

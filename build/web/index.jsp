@@ -4,6 +4,7 @@
     Author     : bruce
 --%>
 
+<%@page import="com.br.lp2.model.Filme"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap 101 Template</title>
+        <title>Sistema de Controle de Cinema</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +47,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->

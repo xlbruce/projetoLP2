@@ -24,7 +24,7 @@ public class Filme implements Serializable {
     
     // Esta enum representa as possiveis situações em que um filme pode se encontrar
     private enum TiposSituacao {
-        cartaz, estreia, lancamento
+        CARTAZ, ESTREIA, LANCAMENTO
     }    
 
     public Filme(String titulo, String diretor, String distribuidora, String situacao, float duracao, int censura) {
