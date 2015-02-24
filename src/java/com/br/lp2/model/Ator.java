@@ -52,6 +52,12 @@ public class Ator implements Serializable {
     public Date getNascimento() {
         return nascimento;
     }
+
+    @Override
+    public String toString() {
+        return "Ator{" + "nome=" + nome + ", nacionalidade=" + nacionalidade + ", nascimento=" + nascimento + '}';
+    }
+    
     
     
 

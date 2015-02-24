@@ -6,11 +6,29 @@
 package com.br.lp2.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author bruce
  */
 public class ListaDeAtores implements Serializable {
+    ArrayList<Ator> atores;
+
+    public ListaDeAtores() {
+        atores = new ArrayList<>();
+    }
+
+    public ArrayList<Ator> getAtores() {
+        return atores;
+    }
+
+    @Override
+    public String toString() {
+        String out = "Lista de atores:\n";
+        for (Ator i : atores)
+            out += "\t" + i;
+        return out;
+    }
     
 }

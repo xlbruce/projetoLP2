@@ -10,7 +10,18 @@ import java.io.Serializable;
 /**
  *
  * @author bruce
+ * @version 1.0
  */
 public class SalaDeProjecao implements Serializable {
+    private int numero;
+
+    public SalaDeProjecao(int numero) {
+        this.numero = numero;
+    }
+
+    @Override
+    public String toString() {
+        return "SalaDeProjecao{" + "numero=" + numero + '}';
+    }
     
 }
