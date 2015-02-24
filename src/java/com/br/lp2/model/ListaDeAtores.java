@@ -10,8 +10,7 @@ import java.io.Serializable;
 /**
  *
  * @author bruce
- * @version 1.0
  */
-public class Genero implements Serializable {
+public class ListaDeAtores implements Serializable {
     
 }
