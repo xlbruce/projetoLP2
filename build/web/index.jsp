@@ -1,12 +1,12 @@
 <%-- 
     Document   : index
     Created on : 24/02/2015, 13:52:59
-    Author     : bruce
+    Author     : bruce3
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
