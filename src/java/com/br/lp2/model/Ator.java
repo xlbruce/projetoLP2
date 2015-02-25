@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author bruce
+ * @author Bruce
  * @version 1.0
  */
 public class Ator implements Serializable {
