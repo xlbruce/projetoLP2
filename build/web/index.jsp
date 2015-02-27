@@ -4,7 +4,12 @@
     Author     : bruce
 --%>
 
+<%@page import="com.br.lp2.model.ListaDeAtores"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.br.lp2.model.Ator"%>
 <%@page import="com.br.lp2.model.Filme"%>
+<%@page import="com.br.lp2.model.Distribuidora"%>
+<%@page import="com.br.lp2.model.Diretor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +30,15 @@
         <![endif]-->
     </head>
     <body>
-
+        <% 
+            /*Testes 
+            Ator a = new Ator("Johnny Depp", "EUA");
+            ListaDeAtores listaAtores = new ListaDeAtores();
+            listaAtores.addAtor(a, "Jack", "principal");
+            Filme f = new Filme ("Filme1", Filme.TiposSituacao.ESTREIA.toString(), "Portugues", listaAtores, new Distribuidora(1, "Paramount"), new Diretor("Diretor1", 1), 12, 1988, 1, 123, false);
+            out.print(f);
+            */
+        %>
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-md-offset-4">
