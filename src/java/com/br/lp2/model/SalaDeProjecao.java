@@ -35,10 +35,6 @@ public class SalaDeProjecao implements Serializable {
         this.poltEsp = poltEsp;
         this.estado = estado;
     }
-
-   
-
-    
     
     @Override
     public String toString() {
