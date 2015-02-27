@@ -14,20 +14,20 @@ import java.io.Serializable;
  */
 public class Filme implements Serializable {
     
-    private String titulo, situacao, idioma;
+    private String titulo, idioma;
+    private TipoSituacao situacao;
     private ListaDeAtores listaAtores;
     private Distribuidora distribuidora;
     private Diretor diretor;
     private int classificacao;
     private int ano, pk, duracao;
-    private boolean legenda;
     
     // Esta enum representa as possiveis situações em que um filme pode se encontrar
-    public enum TiposSituacao {
+    public enum TipoSituacao {
         CARTAZ, ESTREIA, LANCAMENTO
     }
     
-    public Filme(int pk, String titulo, String situacao, String idioma, ListaDeAtores listaAtores, Distribuidora distribuidora, Diretor diretor, int classificacao, int ano, int duracao, boolean legenda) {
+    public Filme(int pk, String titulo, TipoSituacao situacao, String idioma, ListaDeAtores listaAtores, Distribuidora distribuidora, Diretor diretor, int classificacao, int ano, int duracao) {
         this.titulo = titulo;
         this.situacao = situacao;
         this.idioma = idioma;
@@ -38,7 +38,6 @@ public class Filme implements Serializable {
         this.ano = ano;
         this.pk = pk;
         this.duracao = duracao;
-        this.legenda = legenda;
     }  
 
     //Getters e Setters
@@ -53,7 +52,7 @@ public class Filme implements Serializable {
     /**
      * @param situacao the situacao to set
      */
-    public void setSituacao(String situacao) {
+    public void setSituacao(TipoSituacao situacao) {
         this.situacao = situacao;
     }
 
@@ -146,22 +145,8 @@ public class Filme implements Serializable {
      */
     public void setDuracao(int duracao) {
         this.duracao = duracao;
-    }
+    }   
 
-    /**
-     * @return the legenda
-     */
-    public boolean isLegenda() {
-        return legenda;
-    }
-
-    /**
-     * @param legenda the legenda to set
-     */
-    public void setLegenda(boolean legenda) {
-        this.legenda = legenda;
-    }
-    
     public String getTitulo() {
         return titulo;
     }
@@ -174,7 +159,7 @@ public class Filme implements Serializable {
         return distribuidora;
     }
 
-    public String getSituacao() {
+    public TipoSituacao getSituacao() {
         return situacao;
     }
 
@@ -189,8 +174,10 @@ public class Filme implements Serializable {
 
     @Override
     public String toString() {
-        return "Filme{" + "titulo=" + titulo + ", situacao=" + situacao + ", idioma=" + idioma + ", listaAtores=" + listaAtores + ", distribuidora=" + distribuidora + ", diretor=" + diretor + ", classificacao=" + classificacao + ", ano=" + ano + ", pk=" + pk + ", duracao=" + duracao + ", legenda=" + legenda + '}';
+        return "Filme{" + "titulo=" + titulo + ", idioma=" + idioma + ", situacao=" + situacao + ", listaAtores=" + listaAtores + ", distribuidora=" + distribuidora + ", diretor=" + diretor + ", classificacao=" + classificacao + ", ano=" + ano + ", pk=" + pk + ", duracao=" + duracao + '}';
     }
+
+    
 
     
     
