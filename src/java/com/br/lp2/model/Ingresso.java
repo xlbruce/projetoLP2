@@ -9,7 +9,8 @@ import java.io.Serializable;
 
 /**
  *
- * @author 31409695
+ * @author Gilson da Silva
+ * @version 1.0
  */
 public class Ingresso implements Serializable {
     private int pk;
