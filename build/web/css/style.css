@@ -1,0 +1,39 @@
+/* 
+    Created on : 24/02/2015, 18:13:36
+    Author     : bruce
+*/
+
+
+
+/* Login (tela principal) */
+body {    
+    background-color: #f7f7f7;
+}
+.account-wall
+{
+    padding: 30px 30px;
+    width: 30%;
+}
+
+.container {
+    margin-left: 35%;
+    margin-top: 10%;
+}
+
+
+form input[type="text"] {
+    width: 170px;
+}
+
+form input[type="password"] {
+    width: 170px;
+}
+/*Login (tela principal) */
+
+/*Menu principal*/
+form {
+    margin-right: 509px;
+}
+
+/*Menu principal*/
+
