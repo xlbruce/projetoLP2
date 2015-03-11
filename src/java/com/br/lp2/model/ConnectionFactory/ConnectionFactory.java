@@ -1,4 +1,4 @@
-package com.br.gilson.model.ConnectionFactory;
+package com.br.lp2.model.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ public class ConnectionFactory {
     private final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
     private final String PROTOCOL = "jdbc:derby:";
     private final String DOMAIN = "//localhost:1527/";
-    private final String DB = "meudb";
+    private final String DB = "testebd";
     private Connection connection;
     
     public ConnectionFactory() {

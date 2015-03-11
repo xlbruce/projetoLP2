@@ -1,6 +1,6 @@
-package com.br.gilson.model.DAO;
+package com.br.lp2.model.DAO;
 
-import com.br.gilson.model.javabeans.Cargo;
+import com.br.lp2.model.javabeans.Cargo;
 import java.util.ArrayList;
 
 /**

@@ -1,5 +1,5 @@
 
-package com.br.gilson.model.javabeans;
+package com.br.lp2.model.javabeans;
 
 /**
  *
