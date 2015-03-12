@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  *
  * @author 31409695
+ * @version 1.0
  */
 public interface DepartamentoDAO {
     //CRUD

@@ -3,6 +3,7 @@ package com.br.lp2.model.javabeans;
 /**
  *
  * @author 31409695
+ * @version 1.0
  */
 public class Departamento {
     private int id;
@@ -24,7 +25,5 @@ public class Departamento {
     @Override
     public String toString() {
         return "Departamento{" + "id=" + id + ", nome=" + nome + '}';
-    }
-    
-    
+    }  
 }

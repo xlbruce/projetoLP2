@@ -3,6 +3,7 @@ package com.br.lp2.model.javabeans;
 /**
  *
  * @author 31409695
+ * @version 1.0
  */
 public class Funcionario {
     private int id;
@@ -41,8 +42,4 @@ public class Funcionario {
     public String toString() {
         return "Funcionario{" + "id=" + id + ", nome=" + nome + ", rg=" + rg + ", id_cargo=" + id_cargo + ", id_departamento=" + id_departamento + '}';
     }
-    
-    
- 
-    
 }
