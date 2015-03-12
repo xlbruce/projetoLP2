@@ -127,7 +127,7 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
         
             boolean resultado = false;
            try {
-               String sql = "DELETE * FROM departamento WHERE id=?";
+               String sql = "DELETE FROM departamento WHERE id=?";
             
             pst = connection.prepareStatement(sql);
             
@@ -143,7 +143,7 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
     public boolean deleteDepartamento(Departamento d) {
         boolean resultado = false;
         try {
-            String sql = "DELETE * FROM departamento WHERE id=?";
+            String sql = "DELETE FROM departamento WHERE id=?";
             
             pst = connection.prepareStatement(sql);
             
