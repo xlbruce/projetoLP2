@@ -75,7 +75,7 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return departamento;
     }
 
     @Override
