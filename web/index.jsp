@@ -31,13 +31,7 @@
     </head>
     <body>
         <% 
-            /*Testes 
-            Ator a = new Ator("Johnny Depp", "EUA");
-            ListaDeAtores listaAtores = new ListaDeAtores();
-            listaAtores.addAtor(a, "Jack", "principal");
-            Filme f = new Filme ("Filme1", Filme.TiposSituacao.ESTREIA.toString(), "Portugues", listaAtores, new Distribuidora(1, "Paramount"), new Diretor("Diretor1", 1), 12, 1988, 1, 123, false);
-            out.print(f);
-            */
+            
         %>
         <div class="container">
             <div class="row">

@@ -9,8 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * Essa classe é responsável por persistir os dados na tabela Cargo no banco de dados
  * @author 31409695
+ * @version 1.0
  */
 public class CargoDAOConcreto implements CargoDAO {
 
@@ -23,6 +24,11 @@ public class CargoDAOConcreto implements CargoDAO {
         connection = cf.getConnection("derby");
     }
 
+    /**
+     * Insere um novo cargo no banco
+     * @param c Objeto cargo à ser inserido
+     * @return true se inserido com sucesso. false caso contrário.
+     */
     @Override
     public boolean insertCargo(Cargo c) {
         boolean resultado = false;
@@ -37,6 +43,10 @@ public class CargoDAOConcreto implements CargoDAO {
         return resultado;
     }
 
+    /**
+     * Faz a leitura de todos os cargos da tabela cargo
+     * @return Um arraylist com todos os cargos
+     */
     @Override
     public ArrayList<Cargo> readCargos() {
         String sql = "SELECT * FROM cargo";

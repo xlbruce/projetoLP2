@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.lp2.model.DAO;
 
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
 import com.br.lp2.model.javabeans.Departamento;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,13 +14,13 @@ import java.util.logging.Logger;
  *
  * @author 31409695
  */
-public class DepartamentoDAOconcreto implements DepartamentoDAO {
+public class DepartamentoDAOConcreto implements DepartamentoDAO {
 
     private Connection connection;
     private ResultSet rs;
-    private PreparedStatement pst;
+    private PreparedStatement ps;
 
-    public DepartamentoDAOconcreto() {
+    public DepartamentoDAOConcreto() {
         ConnectionFactory cf = new ConnectionFactory();
         connection = cf.getConnection("derby");
     }
@@ -36,9 +30,9 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
         boolean resultado = false;
         String sql = "INSERT INTO departamento (nome) VALUES (?)";
         try {
-            pst = connection.prepareStatement(sql);
-            pst.setString(1, d.getNome());
-            pst.execute();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, d.getNome());
+            ps.execute();
             resultado = true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,8 +45,8 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
         ArrayList<Departamento> departamentos = new ArrayList<>();
         String sql = "SELECT * FROM departamento";
         try {
-            pst = connection.prepareStatement(sql);
-            rs = pst.executeQuery();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 departamentos.add(new Departamento(rs.getInt("id"), rs.getString("nome")));
             }
@@ -67,8 +61,8 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
         Departamento departamento = null;
         String sql = "SELECT * FROM departamento WHERE id=?";
         try {
-            pst = connection.prepareStatement(sql);
-            rs = pst.executeQuery();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 departamento = new Departamento(rs.getInt("id"), rs.getString("nome"));
             }
@@ -84,17 +78,16 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
 
         String sql = "SELECT * FROM departamento WHERE id=?";
         try {
-            pst = connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
 
-            pst.setInt(1, codigo);
-            rs = pst.executeQuery();
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 departamento = new Departamento(rs.getInt("id"), rs.getString("nome"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DepartamentoDAOconcreto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DepartamentoDAOConcreto.class.getName()).log(Level.SEVERE, null, ex);
         }
         return departamento;
     }
@@ -105,11 +98,11 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
         boolean resultado = false;
         try {
             String sql = "UPDATE departamento SET nome=? WHERE id=?";
-            pst = connection.prepareStatement(sql);
-            pst.setString(1, d.getNome());
-            pst.setInt(2, codigo);
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, d.getNome());
+            ps.setInt(2, codigo);
 
-            int r = pst.executeUpdate();
+            int r = ps.executeUpdate();
 
             if (r > 0) {
                 resultado = true;
@@ -117,7 +110,7 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
                 resultado = false;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DepartamentoDAOconcreto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DepartamentoDAOConcreto.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -129,12 +122,12 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
            try {
                String sql = "DELETE FROM departamento WHERE id=?";
             
-            pst = connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
             
-            pst.setInt(1, codigo);
-            resultado = pst.execute();
+            ps.setInt(1, codigo);
+            resultado = ps.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(DepartamentoDAOconcreto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DepartamentoDAOConcreto.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -145,11 +138,11 @@ public class DepartamentoDAOconcreto implements DepartamentoDAO {
         try {
             String sql = "DELETE FROM departamento WHERE id=?";
             
-            pst = connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql);
             
-            pst.setInt(1, d.getId());
+            ps.setInt(1, d.getId());
             
-            resultado = pst.execute();
+            resultado = ps.execute();
         } catch (SQLException sQLException) {
         }
         return resultado;
