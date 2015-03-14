@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author 31409695
+ * @version 1.0
  */
 public class DepartamentoDAOConcreto implements DepartamentoDAO {
 
@@ -32,6 +33,21 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, d.getNome());
+            ps.execute();
+            resultado = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
+    @Override
+    public boolean insertDepartamento(String nome) {
+        boolean resultado = false;
+        String sql = "INSERT INTO departamento (nome) VALUES (?)";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, nome);
             ps.execute();
             resultado = true;
         } catch (Exception e) {
@@ -62,6 +78,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
         String sql = "SELECT * FROM departamento WHERE id=?";
         try {
             ps = connection.prepareStatement(sql);
+            ps.setInt(1, d.getId());
             rs = ps.executeQuery();
             while (rs.next()) {
                 departamento = new Departamento(rs.getInt("id"), rs.getString("nome"));
@@ -73,21 +90,20 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
     }
 
     @Override
-    public Departamento readDepartamento(int codigo) {
+    public Departamento readDepartamentoById(int codigo) {
         Departamento departamento = null;
 
         String sql = "SELECT * FROM departamento WHERE id=?";
         try {
             ps = connection.prepareStatement(sql);
-
             ps.setInt(1, codigo);
             rs = ps.executeQuery();
 
             while (rs.next()) {
                 departamento = new Departamento(rs.getInt("id"), rs.getString("nome"));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DepartamentoDAOConcreto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return departamento;
     }
@@ -109,43 +125,42 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
             } else {
                 resultado = false;
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DepartamentoDAOConcreto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return resultado;
     }
-
-    @Override
-    public boolean deleteDepartamento(int codigo) {
-        
-            boolean resultado = false;
-           try {
-               String sql = "DELETE FROM departamento WHERE id=?";
-            
-            ps = connection.prepareStatement(sql);
-            
-            ps.setInt(1, codigo);
-            resultado = ps.execute();
-        } catch (SQLException ex) {
-            Logger.getLogger(DepartamentoDAOConcreto.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return resultado;
-    }
-
+    
     @Override
     public boolean deleteDepartamento(Departamento d) {
         boolean resultado = false;
         try {
             String sql = "DELETE FROM departamento WHERE id=?";
-            
+
             ps = connection.prepareStatement(sql);
-            
             ps.setInt(1, d.getId());
-            
+
             resultado = ps.execute();
-        } catch (SQLException sQLException) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return resultado;
     }
 
+    @Override
+    public boolean deleteDepartamentoById(int codigo) {
+
+        boolean resultado = false;
+        try {
+            String sql = "DELETE FROM departamento WHERE id=?";
+
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            resultado = ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
 }
+

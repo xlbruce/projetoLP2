@@ -4,6 +4,9 @@
     Author     : 31409695
 --%>
 
+<%@page import="com.br.lp2.model.javabeans.Funcionario"%>
+<%@page import="com.br.lp2.model.DAO.FuncionarioDAOConcreto"%>
+<%@page import="com.br.lp2.model.DAO.FuncionarioDAO"%>
 <%@page import="com.br.lp2.model.javabeans.Cargo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.br.lp2.model.DAO.CargoDAOConcreto"%>
@@ -37,9 +40,38 @@
 //                out.println(cargo);
 //            }
             //adicionar um novo cargo
-            cargoDAO.insertCargo(new Cargo("Teste"));
-            for(Cargo cargo : cargos) {
-                out.println(cargo);
+//            cargoDAO.insertCargo(new Cargo("Teste"));
+//            for(Cargo cargo : cargos) {
+//                out.println(cargo);
+//            }
+//           
+
+                        //Testes Funcionario
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAOConcreto();
+            Funcionario f;
+            ArrayList<Funcionario> funcionarios = funcionarioDAO.readFuncionarios();
+            
+            //Exibir funcionarios
+            for (Funcionario funcionario : funcionarios) {
+                out.println(funcionario);
+            }
+            
+            //Exibir um determinado funcionario
+            f = funcionarioDAO.readFuncionarioById(2);
+            out.println(f);
+            f = funcionarioDAO.readFuncionarioByRg("6543123");
+            out.println(f);
+            
+            //Atualizar e exibir funcionario
+            funcionarioDAO.updateFuncionario(1, new Funcionario (1, "Jao", "324253", 1, 2));
+            for (Funcionario funcionario : funcionarios) {
+                out.println(funcionario);
+            }
+            
+            //Adicionar um novo funcionario
+            funcionarioDAO.insertFuncionario(new Funcionario ("Teste", "2544", 1, 1));
+            for (Funcionario funcionario : funcionarios) {
+                out.println(funcionario);
             }
             
         %>

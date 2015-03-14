@@ -14,18 +14,19 @@ public interface FuncionarioDAO {
     //C - Create
     
     public boolean insertFuncionario (Funcionario f);
+    public boolean insertFuncionario (String nome, String rg, int id_cargo, int id_departamento);
     
     //R - Read
-    public ArrayList <Funcionario> readFuncionario();
+    public ArrayList <Funcionario> readFuncionarios();
     public Funcionario readFuncionario(Funcionario f);
-    public Funcionario readFuncionario (int codigo);
-    public Funcionario readFuncionario (String rg); 
+    public Funcionario readFuncionarioById (int codigo);
+    public Funcionario readFuncionarioByRg (String rg); 
     
     //U - Update
     public boolean updateFuncionario (int codigo, Funcionario f);
     
     //D - Delete
     public boolean deleteFuncionario(Funcionario f);
-    public boolean deleteFuncionario (int codigo);
-    public boolean deleteFuncionario (String rg); 
+    public boolean deleteFuncionarioById (int codigo);
+    public boolean deleteFuncionarioByRg (String rg); 
 }

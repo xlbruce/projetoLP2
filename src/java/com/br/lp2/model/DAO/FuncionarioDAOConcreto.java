@@ -1,15 +1,11 @@
 package com.br.lp2.model.DAO;
 
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
-import com.br.lp2.model.javabeans.Departamento;
 import com.br.lp2.model.javabeans.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,7 +26,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
     @Override
     public boolean insertFuncionario(Funcionario f) {
         boolean resultado = false;
-        String sql = "INSERT INTO funcionario (nome, rg) VALUES (?,?)";
+        String sql = "INSERT INTO funcionario (nome, rg, id_cargo, id_funcionario) VALUES (?,?,?,?)";
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, f.getNome());
@@ -42,9 +38,27 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
         }
         return resultado;
     }
+    
+    @Override
+    public boolean insertFuncionario (String nome, String rg, int id_cargo, int id_departamento){
+        boolean resultado = false;
+        String sql = "INSERT INTO funcionario (nome, rg, id_cargo, id_funcionario) VALUES (?,?,?,?)";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, nome);
+            ps.setString(2, rg);
+            ps.setInt(3, id_cargo);
+            ps.setInt(4, id_departamento);
+            ps.execute();
+            resultado = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
 
     @Override
-    public ArrayList<Funcionario> readFuncionario() {
+    public ArrayList<Funcionario> readFuncionarios() {
         ArrayList<Funcionario> funcionarios = new ArrayList<>();
         String sql = "SELECT * FROM funcionario";
         try {
@@ -77,7 +91,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
     }
 
     @Override
-    public Funcionario readFuncionario(int codigo) {
+    public Funcionario readFuncionarioById(int codigo) {
         Funcionario funcionario = null;
         String sql = "SELECT * FROM funcionario WHERE id=?";
         try {
@@ -94,7 +108,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
     }
 
     @Override
-    public Funcionario readFuncionario(String rg) {
+    public Funcionario readFuncionarioByRg(String rg) {
         Funcionario funcionario = null;
         String sql = "SELECT * FROM departamento WHERE rg=?";
         try {
@@ -120,7 +134,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
             ps.setString(2, f.getRg());
             ps.setInt(3, f.getId_cargo());
             ps.setInt(4, f.getId_departamento());
-            ps.setInt(5, f.getId());
+            ps.setInt(5, codigo);
             resultado = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -144,7 +158,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
     }
 
     @Override
-    public boolean deleteFuncionario(int codigo) {
+    public boolean deleteFuncionarioById(int codigo) {
         boolean resultado = false;
         String sql = "DELETE FROM funcionario WHERE id=?";
         try {
@@ -159,7 +173,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
     }
 
     @Override
-    public boolean deleteFuncionario(String rg) {
+    public boolean deleteFuncionarioByRg(String rg) {
         boolean resultado = false;
         String sql = "DELETE FROM funcionario WHERE rg=?";
         try {
@@ -171,6 +185,5 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
             e.printStackTrace();
         }
         return resultado;
-    }
-    
+    }   
 }
