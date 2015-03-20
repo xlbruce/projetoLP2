@@ -47,6 +47,10 @@ INSERT INTO diretor(NOME) VALUES('Antonio');
 create table distribuidora(id int not null primary key generated always as identity(start with 1, increment by 1), nome varchar(20));
 
 INSERT INTO distribuidora(NOME) VALUES('Apple');
+-- Cria a tabela Lista de Atores e a inicializa com alguns valores
+
+create table listadeatores(id int not null primary key generated always as identity (start with 1 , increment by 1) , id_ator int);
+insert into listadeatores(id_ator) values (1);
 
 
 -- Cria a tabela Filme e a inicializa com alguns valores
@@ -83,13 +87,7 @@ create table ingresso(id int not null primary key generated always as identity(s
 -- numero do ingresso automatico , ou numero da cadeira ? seria string por envolver letra.
 insert into ingresso(numero,inteira,tipo) values (1,true,'geral');
 
--- Cria a tabela Lista de Atores e a inicializa com alguns valores
 
-create table listadeatores(id int not null primary key generated always as identity (start with 1 , increment by 1) , id_ator int);
-
-alter table listadeatores add foreign key (id_ator) references ator(id);
-
-insert into listadeatores(id_ator) values (1);
 --Cria a tabela sala de projecao e a inicializa com alguns valores .
 
 create table saladeprojecao(id int not null primary key generated always as identity (start with 1, increment by 1),num int , lotacao int , postesp int , estados varchar(20));
@@ -109,3 +107,8 @@ insert into listaingresso(id_ingresso) values (1);
  create table sessao(id int not null primary key generated always as identity (start with 1, increment by 1), id_saladeprojecao int , id_filme int,  diahora  date ,  legenda boolean , id_listaingresso int );
 
 insert into sessao(id_saladeprojecao,id_filme,diahora,legenda,id_listaingresso) values (1,1,'2015-03-22',true,1);
+
+-- Inserção de valores na tabela litadeatores , devido a convergência de dados.
+
+alter table listadeatores add foreign key (id_ator) references ator(id);
+
