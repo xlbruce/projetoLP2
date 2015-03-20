@@ -12,7 +12,7 @@ public class Ator implements Serializable {
 
     private String nome, nacionalidade;
     private Date nascimento;
-    private int pk;
+    private int id;
 
     /**
      * Instancia um objeto ator sem sua data de nascimento
@@ -23,6 +23,7 @@ public class Ator implements Serializable {
     public Ator(String nome, String nacionalidade) {
         this.nome = nome;
         this.nacionalidade = nacionalidade;
+        this.id = 0;
     }
     
     /**
@@ -32,11 +33,11 @@ public class Ator implements Serializable {
      * @param nascimento
      * @param pk Primary key
      */
-    public Ator(String nome, String nacionalidade, Date nascimento, int pk) {
+    public Ator(int pk, String nome, String nacionalidade, Date nascimento) {
         this.nome = nome;
         this.nacionalidade = nacionalidade;
         this.nascimento = nascimento;
-        this.pk = pk;
+        this.id = pk;
     }
     
     
@@ -66,8 +67,8 @@ public class Ator implements Serializable {
         return nascimento;
     }
     
-    public int getPk() {
-        return pk;
+    public int getId() {
+        return id;
     }
     
     /**
@@ -76,7 +77,7 @@ public class Ator implements Serializable {
      * @return <b>true</b>, se os 2 atores forem iguais, <b>false</b>, caso contrario.
      */
     public boolean compara(Ator ator) {
-        return ator.getPk() == this.pk && ator.getNacionalidade().equalsIgnoreCase(this.nacionalidade)
+        return ator.getId() == this.id && ator.getNacionalidade().equalsIgnoreCase(this.nacionalidade)
                 && ator.getNascimento().equals(this.nascimento) && ator.getNome().equalsIgnoreCase(this.nome);
     }    
     

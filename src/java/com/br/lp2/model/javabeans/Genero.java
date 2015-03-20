@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.lp2.model.javabeans;
 
 public class Genero  {
     
-    private transient int px;
+    private transient int pk;
     private String nome;
 
     public Genero(String nome) {
@@ -16,17 +11,17 @@ public class Genero  {
     
     /**
      * Cria uma instancia com chave primária.
-     * @param px
+     * @param pk Primary Key
      * @param nome 
      */
-    public Genero(int px, String nome) {
-        this.px = px;
+    public Genero(int pk, String nome) {
+        this.pk = pk;
         this.nome = nome;
     }
 
     @Override
     public String toString() {
-        return "Genero{" + "px=" + px + ", nome=" + nome + '}';
+        return "Genero{" + "px=" + pk + ", nome=" + nome + '}';
     }
     
 }

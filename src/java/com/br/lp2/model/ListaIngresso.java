@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 31409695
+ * @author Gilson da Silva
  * @version 1.0
  */
 public class ListaIngresso {
@@ -12,7 +12,7 @@ public class ListaIngresso {
     private ArrayList<Ingresso> lista;
     
     public ListaIngresso(){
-        lista=new ArrayList<Ingresso>();
+        lista=new ArrayList<>();
     }
     
     public void addIngresso(Ingresso ingresso){

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.lp2.model;
 
 import com.br.lp2.model.javabeans.Cliente;
@@ -14,13 +9,14 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class Ingresso implements Serializable {
+
     private int pk;
     private int id;
     private boolean inteira;
     private Cliente.Especiais tipo;
 
     /**
-     * 
+     *
      * @param pk Primary key
      * @param id Número do ingresso
      * @param inteira true, se o ingresso é meia entrada, false, caso contrário
@@ -32,9 +28,9 @@ public class Ingresso implements Serializable {
         this.inteira = inteira;
         this.tipo = tipo;
     }
-    
+
     /**
-     * 
+     *
      * @param pk Primary key
      * @param id Número do ingresso
      * @param inteira true, se o ingresso é meia entrada, false, caso contrário
@@ -68,13 +64,13 @@ public class Ingresso implements Serializable {
     public Cliente.Especiais getTipo() {
         return tipo;
     }
-    
-    public boolean compara(Ingresso ingresso){
-        return (this.pk==ingresso.getPk() && this.id == ingresso.getId() && this.inteira==ingresso.isInteira() && this.tipo == ingresso.getTipo());
+
+    public boolean compara(Ingresso ingresso) {
+        return (this.pk == ingresso.getPk() && this.id == ingresso.getId() && this.inteira == ingresso.isInteira() && this.tipo == ingresso.getTipo());
     }
 
     @Override
     public String toString() {
         return "Ingresso{" + "pk=" + pk + ", id=" + id + ", inteira=" + inteira + ", tipo=" + tipo + '}';
-    } 
+    }
 }

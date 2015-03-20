@@ -1,20 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.lp2.model.javabeans;
 
-
 import com.br.lp2.model.ListaDeAtores;
+import java.io.Serializable;
 
-public class Filme  {
+/**
+ *
+ * @author Gilson da Silva
+ * @version 1.1
+ */
+public class Filme implements Serializable {
     
     private String titulo, idioma;
     private TipoSituacao situacao;
     private ListaDeAtores listaAtores;
-    private com.br.lp2.model.javabeans.Distribuidora distribuidora;
-    private com.br.lp2.model.javabeans.Diretor diretor;
+    private Distribuidora distribuidora;
+    private Diretor diretor;
     private int classificacao;
     private int ano, pk, duracao;
     
@@ -23,7 +23,9 @@ public class Filme  {
         CARTAZ, ESTREIA, LANCAMENTO
     }
     
-    public Filme(int pk, String titulo, TipoSituacao situacao, String idioma, ListaDeAtores listaAtores, com.br.lp2.model.javabeans.Distribuidora distribuidora, com.br.lp2.model.javabeans.Diretor diretor, int classificacao, int ano, int duracao) {
+    public Filme(int pk, String titulo, TipoSituacao situacao, String idioma,
+            ListaDeAtores listaAtores, Distribuidora distribuidora, 
+            Diretor diretor, int classificacao, int ano, int duracao) {
         this.titulo = titulo;
         this.situacao = situacao;
         this.idioma = idioma;
@@ -83,14 +85,14 @@ public class Filme  {
     /**
      * @param distribuidora the distribuidora to set
      */
-    public void setDistribuidora(com.br.lp2.model.javabeans.Distribuidora distribuidora) {
+    public void setDistribuidora(Distribuidora distribuidora) {
         this.distribuidora = distribuidora;
     }
 
     /**
      * @param diretor the diretor to set
      */
-    public void setDiretor(com.br.lp2.model.javabeans.Diretor diretor) {
+    public void setDiretor(Diretor diretor) {
         this.diretor = diretor;
     }
 
@@ -147,11 +149,11 @@ public class Filme  {
         return titulo;
     }
 
-    public com.br.lp2.model.javabeans.Diretor getDiretor() {
+    public Diretor getDiretor() {
         return diretor;
     }
 
-    public com.br.lp2.model.javabeans.Distribuidora getDistribuidora() {
+    public Distribuidora getDistribuidora() {
         return distribuidora;
     }
 
@@ -171,13 +173,5 @@ public class Filme  {
     @Override
     public String toString() {
         return "Filme{" + "titulo=" + titulo + ", idioma=" + idioma + ", situacao=" + situacao + ", listaAtores=" + listaAtores + ", distribuidora=" + distribuidora + ", diretor=" + diretor + ", classificacao=" + classificacao + ", ano=" + ano + ", pk=" + pk + ", duracao=" + duracao + '}';
-    }
-
-    
-
-    
-    
-    
-    
-    
+    }    
 }

@@ -173,7 +173,7 @@ public class AtorDAOConcreto implements AtorDAO {
         
         try {
             ps = connection.prepareStatement(sql);
-            ps.setInt(1, a.getPk());
+            ps.setInt(1, a.getId());
             if(ps.execute()) {
                 return true;
             }
@@ -182,5 +182,4 @@ public class AtorDAOConcreto implements AtorDAO {
         }
         return false;        
     }
-
 }

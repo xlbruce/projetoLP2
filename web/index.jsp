@@ -7,9 +7,9 @@
 <%@page import="com.br.lp2.model.ListaDeAtores"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.br.lp2.model.Ator"%>
-<%@page import="com.br.lp2.model.Filme"%>
-<%@page import="com.br.lp2.model.Distribuidora"%>
-<%@page import="com.br.lp2.model.Diretor"%>
+<%@page import="com.br.lp2.model.javabeans.Filme"%>
+<%@page import="com.br.lp2.model.javabeans.Distribuidora"%>
+<%@page import="com.br.lp2.model.javabeans.Diretor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">

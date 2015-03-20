@@ -1,6 +1,5 @@
 package com.br.lp2.model.DAO;
 
-import com.br.lp2.model.javabeans.Diretor;
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
 import com.br.lp2.model.javabeans.Diretor;
 import java.sql.Connection;
@@ -8,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -66,7 +63,7 @@ public class DiretorDAOConcreto implements DiretorDAO {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();            
             while(rs.next()) {
-                diretores.add(new Diretor(rs.getString("nome"), rs.getInt("pk")));
+                diretores.add(new Diretor(rs.getInt("pk"), rs.getString("nome")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -83,7 +80,7 @@ public class DiretorDAOConcreto implements DiretorDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             rs.next(); //Posiciona o 'cursor' para a primeira posição valida da consulta
-            return new Diretor(rs.getString("nome"), rs.getInt("id"));
+            return new Diretor(rs.getInt("pk"), rs.getString("nome"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -99,7 +96,7 @@ public class DiretorDAOConcreto implements DiretorDAO {
             ps.setString(1, nome);
             rs = ps.executeQuery();
             rs.next(); //Posiciona o 'cursor' para a primeira posição valida da consulta
-            return new Diretor(rs.getString("nome"), rs.getInt("id"));
+            return new Diretor(rs.getInt("id"), rs.getString("nome"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -152,5 +149,4 @@ public class DiretorDAOConcreto implements DiretorDAO {
         }
         return false; 
     }
-
 }

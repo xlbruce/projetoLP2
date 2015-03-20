@@ -4,6 +4,10 @@
     Author     : 31409695
 --%>
 
+<%@page import="com.br.lp2.model.DAO.DistribuidoraDAOConcreto"%>
+<%@page import="com.br.lp2.model.javabeans.Distribuidora"%>
+<%@page import="com.br.lp2.model.DAO.DepartamentoDAOConcreto"%>
+<%@page import="com.br.lp2.model.javabeans.Departamento"%>
 <%@page import="com.br.lp2.model.javabeans.Diretor"%>
 <%@page import="com.br.lp2.model.DAO.DiretorDAOConcreto"%>
 <%@page import="java.text.DateFormat"%>
@@ -33,12 +37,20 @@
     </head>
     <body>
         <%
-            DiretorDAOConcreto dao = new DiretorDAOConcreto();
-            Diretor d = new Diretor("Andre", 0);
-            dao.insertDiretor(d);
-            out.print(dao.readDiretorByNome("Andre"));
-            dao.deleteDiretor(2);
+            DistribuidoraDAOConcreto dao = new DistribuidoraDAOConcreto();
+            Distribuidora d = new Distribuidora(0, "distribuidora 1");
+            ArrayList<Distribuidora> distribuidoras = new ArrayList<>();
             
+            distribuidoras = dao.readDistribuidoras();
+            out.println(distribuidoras.size());
+            for (Distribuidora dist : distribuidoras) {
+                out.println(dist + "<br>");
+            }
+            
+            out.println("<br/><br/>");
+            
+            d = dao.readDistribuidoraById(1);
+            out.println(d); 
 
 
         %>
