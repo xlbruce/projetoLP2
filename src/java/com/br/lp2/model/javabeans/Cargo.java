@@ -1,4 +1,3 @@
-
 package com.br.lp2.model.javabeans;
 
 /**

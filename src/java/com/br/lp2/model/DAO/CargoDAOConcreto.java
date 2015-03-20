@@ -31,16 +31,17 @@ public class CargoDAOConcreto implements CargoDAO {
      */
     @Override
     public boolean insertCargo(Cargo c) {
-        boolean resultado = false;
         try {
             String sql = "INSERT INTO cargo(nome) VALUES (?)";
             ps = connection.prepareStatement(sql);
             ps.setString(1, c.getNome());
-            resultado = ps.execute();
+            if (ps.execute()) {
+                return true;
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return resultado;
+        return false;
     }
 
     /**

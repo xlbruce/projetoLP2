@@ -33,6 +33,26 @@ public class SalaDeProjecao  {
         this.poltEsp = poltEsp;
         this.estado = estado;
     }
+
+    public int getPk() {
+        return pk;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public int getLotacao() {
+        return lotacao;
+    }
+
+    public int getPoltEsp() {
+        return poltEsp;
+    }
+
+    public Estados getEstado() {
+        return estado;
+    }
     
     
     
