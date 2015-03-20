@@ -38,7 +38,7 @@ public class CargoDAOConcreto implements CargoDAO {
             ps.setString(1, c.getNome());
             resultado = ps.execute();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return resultado;
     }
@@ -58,7 +58,7 @@ public class CargoDAOConcreto implements CargoDAO {
                 lista.add(new Cargo(rs.getInt("id"), rs.getString("nome")));
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return lista;
     }
@@ -75,7 +75,7 @@ public class CargoDAOConcreto implements CargoDAO {
                 c = new Cargo(rs.getInt("id"), rs.getString("nome"));
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return c;
     }
@@ -92,7 +92,7 @@ public class CargoDAOConcreto implements CargoDAO {
                 c = new Cargo(rs.getInt(1), rs.getString(2));
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return c;
     }
@@ -107,7 +107,7 @@ public class CargoDAOConcreto implements CargoDAO {
             ps.setInt(2, id);
             resultado = ps.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado > 0 ? true : false;
     }
@@ -122,7 +122,7 @@ public class CargoDAOConcreto implements CargoDAO {
             ps.execute();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -137,7 +137,7 @@ public class CargoDAOConcreto implements CargoDAO {
             ps.executeQuery();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }

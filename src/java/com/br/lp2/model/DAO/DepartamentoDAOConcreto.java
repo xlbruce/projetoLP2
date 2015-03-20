@@ -36,7 +36,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
             ps.execute();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -51,7 +51,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
             ps.execute();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -67,7 +67,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
                 departamentos.add(new Departamento(rs.getInt("id"), rs.getString("nome")));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return departamentos;
     }
@@ -84,7 +84,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
                 departamento = new Departamento(rs.getInt("id"), rs.getString("nome"));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return departamento;
     }
@@ -103,7 +103,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
                 departamento = new Departamento(rs.getInt("id"), rs.getString("nome"));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return departamento;
     }
@@ -126,7 +126,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
                 resultado = false;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -142,7 +142,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
 
             resultado = ps.execute();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -158,7 +158,7 @@ public class DepartamentoDAOConcreto implements DepartamentoDAO {
             ps.setInt(1, codigo);
             resultado = ps.execute();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }

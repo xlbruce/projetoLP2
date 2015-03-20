@@ -34,7 +34,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
             ps.execute();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -52,7 +52,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
             ps.execute();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -68,7 +68,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
                 funcionarios.add(new Funcionario(rs.getInt("id"), rs.getString("nome"), rs.getString("rg"), rs.getInt("id_cargo"), rs.getInt("id_departamento")));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return funcionarios;
     }
@@ -85,7 +85,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
                funcionario = (new Funcionario(rs.getInt("id"), rs.getString("nome"), rs.getString("rg"), rs.getInt("id_cargo"), rs.getInt("id_departamento")));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return funcionario;
     }
@@ -102,7 +102,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
                funcionario = (new Funcionario(rs.getInt("id"), rs.getString("nome"), rs.getString("rg"), rs.getInt("id_cargo"), rs.getInt("id_departamento")));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return funcionario;
     }
@@ -119,7 +119,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
                funcionario = (new Funcionario(rs.getInt("id"), rs.getString("nome"), rs.getString("rg"), rs.getInt("id_cargo"), rs.getInt("id_departamento")));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return funcionario;
     }
@@ -137,7 +137,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
             ps.setInt(5, codigo);
             resultado = ps.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado > 0 ? true : false;
     }
@@ -152,7 +152,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
             ps.execute();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -167,7 +167,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
             ps.execute();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }
@@ -182,7 +182,7 @@ public class FuncionarioDAOConcreto implements FuncionarioDAO{
             ps.execute();
             resultado = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return resultado;
     }   

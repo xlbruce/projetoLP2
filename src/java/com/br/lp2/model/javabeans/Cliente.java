@@ -1,5 +1,6 @@
 package com.br.lp2.model.javabeans;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * @author Gilson da Silva
  * @version 1.0
  */
-public class Cliente {
+public class Cliente implements Serializable {
 
     private int pk;
     private String nome;
@@ -24,6 +25,7 @@ public class Cliente {
         this.nome = nome;
         this.nascimento = nascimento;
         this.tipo = tipo;
+        
     }
 
     public Cliente(int pk, String nome, Date nascimento) {

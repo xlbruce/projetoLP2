@@ -39,7 +39,7 @@ public class AtorDAOConcreto implements AtorDAO {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return false;
     }
@@ -52,7 +52,7 @@ public class AtorDAOConcreto implements AtorDAO {
     @Override
     public ArrayList<Ator> readAtors() {
         String sql = "SELECT * FROM ator";
-        ArrayList<Ator> atores = null;
+        ArrayList<Ator> atores = new ArrayList<>();
 
         try {
             ps = connection.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class AtorDAOConcreto implements AtorDAO {
                         rs.getString("nacionalidade"), rs.getDate("nascimento")));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return atores;
     }
@@ -76,19 +76,18 @@ public class AtorDAOConcreto implements AtorDAO {
     @Override
     public Ator readAtorById(int id) {
         String sql = "SELECT * FROM ator WHERE id = ?";
-        Ator ator = null;
 
         try {
             ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
-
-            ator = new Ator(rs.getString("nome"), rs.getString("nacionalidade"),
+            rs.next(); //Posiciona o 'cursor' para a primeira posição valida da consulta
+            return new Ator(rs.getString("nome"), rs.getString("nacionalidade"),
                     rs.getDate("nascimento"));
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        return ator;
+        return null;
     }
 
     /**
@@ -101,19 +100,18 @@ public class AtorDAOConcreto implements AtorDAO {
     @Override
     public Ator readAtorByNome(String nome) {
         String sql = "SELECT * FROM ator WHERE nome = ?";
-        Ator ator = null;
 
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, nome);
             rs = ps.executeQuery();
-
-            ator = new Ator(rs.getString("nome"), rs.getString("nacionalidade"),
+            rs.next(); //Posiciona o 'cursor' para a primeira posição valida da consulta
+            return new Ator(rs.getString("nome"), rs.getString("nacionalidade"),
                     rs.getDate("nascimento"));
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        return ator;
+        return null;
     }
 
     /**
@@ -134,11 +132,12 @@ public class AtorDAOConcreto implements AtorDAO {
             ps.setString(1, a.getNome());
             ps.setString(2, a.getNacionalidade());
             ps.setDate(3, (Date) a.getNascimento()); //Deve-se fazer o cast para java.sql.Date
+            ps.setInt(4, id);
             if(ps.executeUpdate() != 0) { //Verifica se foi atualizado
                 return true;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.print(e.getMessage());
         }
         return false;        
     }
@@ -179,6 +178,7 @@ public class AtorDAOConcreto implements AtorDAO {
                 return true;
             }
         } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return false;        
     }

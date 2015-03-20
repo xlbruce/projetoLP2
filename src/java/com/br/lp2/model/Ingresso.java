@@ -5,6 +5,7 @@
  */
 package com.br.lp2.model;
 
+import com.br.lp2.model.javabeans.Cliente;
 import java.io.Serializable;
 
 /**

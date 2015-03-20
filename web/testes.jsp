@@ -4,9 +4,14 @@
     Author     : 31409695
 --%>
 
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.br.lp2.model.javabeans.Cliente.Especiais"%>
+<%@page import="com.br.lp2.model.javabeans.Cliente"%>
+<%@page import="com.br.lp2.model.DAO.ClienteDAOConcreto"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="com.br.lp2.model.ConnectionFactory.ConnectionFactory"%>
-<%@page import="java.sql.Date"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.br.lp2.model.Ator"%>
 <%@page import="com.br.lp2.model.DAO.AtorDAOConcreto"%>
 <%@page import="com.br.lp2.model.DAO.AtorDAO"%>
@@ -26,9 +31,12 @@
     </head>
     <body>
         <%
-            AtorDAOConcreto dao = new AtorDAOConcreto();
-            Ator a = new Ator("teset", "aaa");
-            dao.updateAtor(1, a);
+            ClienteDAOConcreto dao = new ClienteDAOConcreto();
+            Cliente c = new Cliente(0, "João", new Date(), Especiais.GERAL);
+            dao.deleteCliente(9);
+            out.print(dao.readClienteById(1));
+            
+
 
         %>
     </body>

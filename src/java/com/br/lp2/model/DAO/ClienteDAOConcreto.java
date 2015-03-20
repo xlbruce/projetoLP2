@@ -33,14 +33,14 @@ public class ClienteDAOConcreto implements ClienteDAO {
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, c.getNome());
-            ps.setDate(2, (Date) c.getNascimento());
-            ps.setObject(3, (Especiais) c.getTipo());
+            ps.setDate(2, new Date(c.getNascimento().getTime()));
+            ps.setString(3, c.getTipo().toString());
             if (ps.execute()) {
                 return true;
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return false;
     }
@@ -54,11 +54,11 @@ public class ClienteDAOConcreto implements ClienteDAO {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                clientes.add(new Cliente(rs.getInt("pk"), rs.getString("nome"),
+                clientes.add(new Cliente(rs.getInt("id"), rs.getString("nome"),
                         rs.getDate("nascimento"), (Especiais) rs.getObject("tipo")));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return clientes;
     }
@@ -72,14 +72,15 @@ public class ClienteDAOConcreto implements ClienteDAO {
             ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
-            while (rs.next()) {
-                cliente = new Cliente(rs.getInt("pk"), rs.getString("nome"),
-                        rs.getDate("nascimento"), (Especiais) rs.getObject("tipo"));
-            }
+            rs.next();
+            return new Cliente(rs.getInt("id"), rs.getString("nome"),
+                    rs.getDate("nascimento"),
+                    Especiais.valueOf(rs.getString("tipo")));
+
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        return cliente;
+        return null;
     }
 
     @Override
@@ -91,14 +92,15 @@ public class ClienteDAOConcreto implements ClienteDAO {
             ps = connection.prepareStatement(sql);
             ps.setString(1, nome);
             rs = ps.executeQuery();
-            while (rs.next()) {
-                cliente = new Cliente(rs.getInt("pk"), rs.getString("nome"),
-                        rs.getDate("nascimento"), (Especiais) rs.getObject("tipo"));
-            }
+            rs.next();
+            return new Cliente(rs.getInt("id"), rs.getString("nome"),
+                    rs.getDate("nascimento"),
+                    Especiais.valueOf(rs.getString("tipo")));
+
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        return cliente;
+        return null;
     }
 
     @Override
@@ -107,13 +109,13 @@ public class ClienteDAOConcreto implements ClienteDAO {
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, c.getNome());
-            ps.setDate(2, (Date) c.getNascimento());
+            ps.setDate(2, new java.sql.Date(c.getNascimento().getTime()));
             ps.setObject(3, (Especiais) c.getTipo());
             if (ps.executeUpdate() != 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return false;
     }
@@ -129,7 +131,7 @@ public class ClienteDAOConcreto implements ClienteDAO {
                 return true;
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return false;
     }
@@ -145,7 +147,7 @@ public class ClienteDAOConcreto implements ClienteDAO {
                 return true;
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return false;
     }

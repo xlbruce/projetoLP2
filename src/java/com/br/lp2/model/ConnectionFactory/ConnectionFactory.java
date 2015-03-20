@@ -25,7 +25,7 @@ public class ConnectionFactory {
             Class.forName(DRIVER).newInstance();
             connection = DriverManager.getConnection(PROTOCOL + DOMAIN + DB, "root", "root");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         }
         return connection;
