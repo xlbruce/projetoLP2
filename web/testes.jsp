@@ -4,6 +4,8 @@
     Author     : 31409695
 --%>
 
+<%@page import="com.br.lp2.model.javabeans.Diretor"%>
+<%@page import="com.br.lp2.model.DAO.DiretorDAOConcreto"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.br.lp2.model.javabeans.Cliente.Especiais"%>
@@ -31,10 +33,11 @@
     </head>
     <body>
         <%
-            ClienteDAOConcreto dao = new ClienteDAOConcreto();
-            Cliente c = new Cliente(0, "João", new Date(), Especiais.GERAL);
-            dao.deleteCliente(9);
-            out.print(dao.readClienteById(1));
+            DiretorDAOConcreto dao = new DiretorDAOConcreto();
+            Diretor d = new Diretor("Andre", 0);
+            dao.insertDiretor(d);
+            out.print(dao.readDiretorByNome("Andre"));
+            dao.deleteDiretor(2);
             
 
 

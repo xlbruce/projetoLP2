@@ -1,5 +1,6 @@
 package com.br.lp2.model.DAO;
 
+import com.br.lp2.model.javabeans.Diretor;
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
 import com.br.lp2.model.javabeans.Diretor;
 import java.sql.Connection;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
  * @version 1.0
  */
 public class DiretorDAOConcreto implements DiretorDAO {
-    
+
     private Connection connection;
     private ResultSet rs;
     private PreparedStatement ps;
@@ -28,50 +29,128 @@ public class DiretorDAOConcreto implements DiretorDAO {
 
     @Override
     public boolean insertDiretor(Diretor d) {
-        String sql = "INSERT INTO diretor WHERE id = ?";        
+        String sql = "INSERT INTO diretor (nome) VALUES (?)";
         try {
             ps = connection.prepareStatement(sql);
-            ps.setInt(1, d.getPk());
-            
+            ps.setString(1, d.getNome());
+            if (ps.execute()) {
+                return true;
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(DiretorDAOConcreto.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override
     public boolean insertDiretor(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO diretor (nome) VALUES (?)";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, nome);
+            if (ps.execute()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
     }
 
     @Override
     public ArrayList<Diretor> readDiretor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM diretor";
+        ArrayList<Diretor> diretores = new ArrayList<>();
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();            
+            while(rs.next()) {
+                diretores.add(new Diretor(rs.getString("nome"), rs.getInt("pk")));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return diretores;
     }
 
     @Override
     public Diretor readDiretorById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM diretor WHERE id = ?";
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            rs.next(); //Posiciona o 'cursor' para a primeira posição valida da consulta
+            return new Diretor(rs.getString("nome"), rs.getInt("id"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     @Override
     public Diretor readDiretorByNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM diretor WHERE nome = ?";
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, nome);
+            rs = ps.executeQuery();
+            rs.next(); //Posiciona o 'cursor' para a primeira posição valida da consulta
+            return new Diretor(rs.getString("nome"), rs.getInt("id"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     @Override
     public boolean updateDiretor(int id, Diretor d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE diretor SET nome = ?";
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, d.getNome());
+            if(ps.executeUpdate() != 0) { //Verifica se foi atualizado
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+        return false; 
     }
 
     @Override
     public boolean deleteDiretor(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM diretor WHERE id = ?";
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            if(ps.execute()) {
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
     }
 
     @Override
     public boolean deleteDiretor(Diretor d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM ator WHERE id = ?";
+        
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, d.getPk());
+            if(ps.execute()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false; 
     }
-    
+
 }

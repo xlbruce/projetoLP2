@@ -66,7 +66,6 @@ public class ClienteDAOConcreto implements ClienteDAO {
     @Override
     public Cliente readClienteById(int id) {
         String sql = "SELECT * FROM cliente WHERE id = ?";
-        Cliente cliente = null;
 
         try {
             ps = connection.prepareStatement(sql);
