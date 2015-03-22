@@ -23,7 +23,6 @@ public interface ListaIngressoDAO {
     //R - Read
     public ArrayList<ListaIngresso> readListaIngressos();
     public ListaIngresso readListaIngressoById(int id);
-    public ListaIngresso readListaIngressoByNome(String nome);
     
     //U - Update
     public boolean updateListaIngresso(int id, ListaIngresso d);
@@ -33,7 +32,3 @@ public interface ListaIngressoDAO {
     public boolean deleteListaIngresso(ListaIngresso d);
     
 }
-
-
-
-

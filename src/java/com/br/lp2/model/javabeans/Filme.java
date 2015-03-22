@@ -16,14 +16,14 @@ public class Filme implements Serializable {
     private Distribuidora distribuidora;
     private Diretor diretor;
     private int classificacao;
-    private int ano, pk, duracao;
+    private int ano, id, duracao;
     
     // Esta enum representa as possiveis situações em que um filme pode se encontrar
     public enum TipoSituacao {
         CARTAZ, ESTREIA, LANCAMENTO
     }
     
-    public Filme(int pk, String titulo, TipoSituacao situacao, String idioma,
+    public Filme(int id, String titulo, TipoSituacao situacao, String idioma,
             ListaDeAtores listaAtores, Distribuidora distribuidora, 
             Diretor diretor, int classificacao, int ano, int duracao) {
         this.titulo = titulo;
@@ -34,7 +34,7 @@ public class Filme implements Serializable {
         this.diretor = diretor;
         this.classificacao = classificacao;
         this.ano = ano;
-        this.pk = pk;
+        this.id = id;
         this.duracao = duracao;
     }  
 
@@ -75,6 +75,11 @@ public class Filme implements Serializable {
         return listaAtores;
     }
 
+    public int getIdListaAtores(){
+    
+    return listaAtores.getPk();
+    
+    }
     /**
      * @param listaAtores the listaAtores to set
      */
@@ -125,17 +130,17 @@ public class Filme implements Serializable {
     }
 
     /**
-     * @return the pk
+     * @return the id
      */
     public int getPk() {
-        return pk;
+        return id;
     }
 
     /**
-     * @param pk the pk to set
+     * @param id the id to set
      */
-    public void setPk(int pk) {
-        this.pk = pk;
+    public void setPk(int id) {
+        this.id = id;
     }
 
     /**
@@ -172,6 +177,6 @@ public class Filme implements Serializable {
 
     @Override
     public String toString() {
-        return "Filme{" + "titulo=" + titulo + ", idioma=" + idioma + ", situacao=" + situacao + ", listaAtores=" + listaAtores + ", distribuidora=" + distribuidora + ", diretor=" + diretor + ", classificacao=" + classificacao + ", ano=" + ano + ", pk=" + pk + ", duracao=" + duracao + '}';
+        return "Filme{" + "titulo=" + titulo + ", idioma=" + idioma + ", situacao=" + situacao + ", listaAtores=" + listaAtores + ", distribuidora=" + distribuidora + ", diretor=" + diretor + ", classificacao=" + classificacao + ", ano=" + ano + ", id=" + id + ", duracao=" + duracao + '}';
     }    
 }

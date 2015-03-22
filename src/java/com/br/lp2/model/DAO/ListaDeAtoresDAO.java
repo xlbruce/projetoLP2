@@ -23,7 +23,6 @@ public interface ListaDeAtoresDAO {
     //R - Read
     public ArrayList<ListaDeAtores> readListaDeAtoress();
     public ListaDeAtores readListaDeAtoresById(int id);
-    public ListaDeAtores readListaDeAtoresByNome(String nome);
     
     //U - Update
     public boolean updateListaDeAtores(int id, ListaDeAtores d);
@@ -33,7 +32,3 @@ public interface ListaDeAtoresDAO {
     public boolean deleteListaDeAtores(ListaDeAtores d);
     
 }
-
-
-  
-

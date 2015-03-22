@@ -1,5 +1,6 @@
 package com.br.lp2.model;
 
+import com.br.lp2.model.javabeans.Filme;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -10,11 +11,25 @@ import java.util.ArrayList;
  */
 public class ListaDeAtores implements Serializable {
     ArrayList<InfoAtor> atores;
+    int pk;
+    Filme filme;
 
-    public ListaDeAtores() {
-        atores = new ArrayList<>();
+   
+    public ListaDeAtores(ArrayList<InfoAtor> atores, int pk,Filme filme) {
+        this.atores = atores;
+        this.pk = pk;
+        this.filme = filme;
     }
 
+    public int getPk() {
+        return pk;
+    }
+
+    public Filme getFilme() {
+        return filme;
+    }
+
+    
     public ArrayList<InfoAtor> getAtores() {
         return atores;
     }

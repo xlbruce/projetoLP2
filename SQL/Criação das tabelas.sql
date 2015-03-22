@@ -49,7 +49,7 @@ create table distribuidora(id int not null primary key generated always as ident
 INSERT INTO distribuidora(NOME) VALUES('Apple');
 -- Cria a tabela Lista de Atores e a inicializa com alguns valores
 
-create table listadeatores(id int not null primary key generated always as identity (start with 1 , increment by 1) ,id_filme int, id_ator int);
+create table listadeatores(id int not null primary key generated always as identity (start with 1 , increment by 1), id_filme int, id_ator int);
 insert into listadeatores(id_filme,id_ator) values (1,1);
 
 

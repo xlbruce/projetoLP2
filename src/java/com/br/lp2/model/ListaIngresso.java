@@ -26,6 +26,10 @@ public class ListaIngresso {
             }
         }
     }
+
+    public int getPk() {
+        return pk;
+    }
     
     public void trocaIngresso(Ingresso i1, Ingresso i2){
         removeIngresso(i1);
