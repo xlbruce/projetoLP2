@@ -10,51 +10,52 @@ import java.io.Serializable;
  */
 public class Ingresso implements Serializable {
 
-    private int pk;
     private int id;
+    private int numero;
     private boolean inteira;
     private Cliente.Especiais tipo;
 
     /**
      *
-     * @param pk Primary key
-     * @param id Número do ingresso
+     * @param id Primary key
+     * @param numero Número do ingresso
      * @param inteira true, se o ingresso é meia entrada, false, caso contrário
      * @param tipo Tipo de ingresso vendido
      */
-    public Ingresso(int pk, int id, boolean inteira, Cliente.Especiais tipo) {
-        this.pk = pk;
+    public Ingresso(int id, int numero, boolean inteira, Cliente.Especiais tipo) {
         this.id = id;
+        this.numero = numero;
         this.inteira = inteira;
         this.tipo = tipo;
     }
 
     /**
      *
-     * @param pk Primary key
-     * @param id Número do ingresso
+     * @param id Primary key
+     * @param numero Número do ingresso
      * @param inteira true, se o ingresso é meia entrada, false, caso contrário
      */
-    public Ingresso(int pk, int id, boolean inteira) {
-        this.pk = pk;
+    public Ingresso(int id, int numero, boolean inteira) {
         this.id = id;
+        this.numero = numero;
         this.inteira = inteira;
         this.tipo = Cliente.Especiais.GERAL;
     }
 
-    public Ingresso(int pk, int id) {
-        this.pk = pk;
+
+    public Ingresso(int id, int num) {
         this.id = id;
+        this.numero = num;
         this.inteira = true;
         this.tipo = Cliente.Especiais.GERAL;
     }
 
-    public int getPk() {
-        return pk;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public int getNumero() {
+        return numero;
     }
 
     public boolean isInteira() {
@@ -66,11 +67,11 @@ public class Ingresso implements Serializable {
     }
 
     public boolean compara(Ingresso ingresso) {
-        return (this.pk == ingresso.getPk() && this.id == ingresso.getId() && this.inteira == ingresso.isInteira() && this.tipo == ingresso.getTipo());
+        return (this.id == ingresso.getId() && this.numero == ingresso.getNumero() && this.inteira == ingresso.isInteira() && this.tipo == ingresso.getTipo());
     }
 
     @Override
     public String toString() {
-        return "Ingresso{" + "pk=" + pk + ", id=" + id + ", inteira=" + inteira + ", tipo=" + tipo + '}';
+        return "Ingresso{" + "id=" + id + ", numero=" + numero + ", inteira=" + inteira + ", tipo=" + tipo + '}';
     }
 }

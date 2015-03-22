@@ -26,6 +26,15 @@ public class Sessao {
         listaIngresso = new ListaIngresso();
     }
     
+    public Sessao(int pk, SalaDeProjecao sala, Filme filme, Date diaHora, boolean legenda, ListaIngresso lista) {
+        this.pk = pk;
+        this.sala = sala;
+        this.filme = filme;
+        this.diaHora = diaHora;
+        this.legenda = legenda;
+        listaIngresso = lista;
+    }
+    
     //Getters e Setters
     public int getPk() {
         return pk;

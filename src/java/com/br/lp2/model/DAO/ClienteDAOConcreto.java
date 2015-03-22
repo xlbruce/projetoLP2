@@ -104,12 +104,13 @@ public class ClienteDAOConcreto implements ClienteDAO {
 
     @Override
     public boolean updateCliente(int id, Cliente c) {
-        String sql = "UPDATE cliente SET nome = ?, nascimento = ?, tipo = ?";
+        String sql = "UPDATE cliente SET nome = ?, nascimento = ?, tipo = ? WHERE id = ?";
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, c.getNome());
             ps.setDate(2, new java.sql.Date(c.getNascimento().getTime()));
             ps.setObject(3, (Especiais) c.getTipo());
+            ps.setInt(4, id);
             if (ps.executeUpdate() != 0) {
                 return true;
             }
