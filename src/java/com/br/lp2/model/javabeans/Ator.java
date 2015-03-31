@@ -1,4 +1,4 @@
-package com.br.lp2.model;
+package com.br.lp2.model.javabeans;
 
 import java.io.Serializable;
 import java.util.Date;

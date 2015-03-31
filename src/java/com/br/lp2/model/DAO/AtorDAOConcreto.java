@@ -1,6 +1,6 @@
 package com.br.lp2.model.DAO;
 
-import com.br.lp2.model.Ator;
+import com.br.lp2.model.javabeans.Ator;
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.Date;

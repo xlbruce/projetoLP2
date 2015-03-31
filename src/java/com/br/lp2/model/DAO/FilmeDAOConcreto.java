@@ -38,8 +38,8 @@ public class FilmeDAOConcreto implements FilmeDAO {
     public boolean insertFilme(Filme f) {
         boolean resultado = false;
         String sql = "INSERT INTO filme (titulo, situacao, idioma, classificacao,"
-                + " ano, duracao, id_listaAtores, "
-                + "id_distribuidora, id_diretor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + " ano, duracao, "
+                + "id_distribuidora, id_diretor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, f.getTitulo());
@@ -48,33 +48,8 @@ public class FilmeDAOConcreto implements FilmeDAO {
             ps.setInt(4, f.getClassificacao());
             ps.setInt(5, f.getAno());
             ps.setInt(6, f.getDuracao());
-            ps.setInt(7, f.getListaAtores().getId());
-
-            if (ps.execute()) {
-                return true;
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return false;
-    }
-
-    public boolean insertFilme(String titulo, String situacao, String idioma, int classificacao, int ano, int duracao, int id_listaAtores, int id_distribuidora, int id_diretor) {
-        boolean resultado = false;
-        String sql = "INSERT INTO filme (titulo, situacao, idioma, classificacao,"
-                + " ano, duracao, id_listaAtores, "
-                + "id_distribuidora, id_diretor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try {
-            ps = connection.prepareStatement(sql);
-            ps.setString(1, titulo);
-            ps.setString(2, situacao);
-            ps.setString(3, idioma);
-            ps.setInt(4, classificacao);
-            ps.setInt(5, ano);
-            ps.setInt(6, duracao);
-            ps.setInt(7, id_listaAtores);
-            ps.setInt(8, id_distribuidora);
-            ps.setInt(9, id_diretor);
+            ps.setInt(7, f.getDistribuidora().getPk());
+            ps.setInt(8, f.getDiretor().getPk());
 
             if (ps.execute()) {
                 return true;
@@ -87,8 +62,9 @@ public class FilmeDAOConcreto implements FilmeDAO {
 
     @Override
     public ArrayList<Filme> readFilmes() {
-        String sql = "SELECT * FROM filme";
-        ArrayList<Filme> filmes = null;
+        String sql = "SELECT * FROM listadeatores WHERE id";
+        ArrayList<Filme> filmes = new ArrayList<>();
+        DistribuidoraDAOConcreto daoDistribuidora = new DistribuidoraDAOConcreto();
 
         try {
             ps = connection.prepareStatement(sql);
@@ -99,8 +75,8 @@ public class FilmeDAOConcreto implements FilmeDAO {
                         rs.getString("titulo"),
                         (TipoSituacao) rs.getObject("situacao"),
                         rs.getString("idioma"),
-                        (ListaDeAtores) rs.getObject("id_listaAtores"),
-                        (Distribuidora) rs.getObject("id_distribuidora"),
+                        null,
+                        daoDistribuidora.readDistribuidoraById(rs.getInt("id_distribuidora")),
                         (Diretor) rs.getObject("id_diretor"),
                         rs.getInt("ano"),
                         rs.getInt("duracao"),

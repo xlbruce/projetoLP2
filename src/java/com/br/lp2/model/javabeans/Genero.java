@@ -1,8 +1,15 @@
 package com.br.lp2.model.javabeans;
 
-public class Genero  {
+import java.io.Serializable;
+
+/**
+ *
+ * @author Gilson da Silva
+ * @version 1.0
+ */
+public class Genero implements Serializable {
     
-    private transient int pk;
+    private transient int id;
     private String nome;
 
     public Genero(String nome) {
@@ -11,17 +18,25 @@ public class Genero  {
     
     /**
      * Cria uma instancia com chave primária.
-     * @param pk Primary Key
+     * @param id
      * @param nome 
      */
-    public Genero(int pk, String nome) {
-        this.pk = pk;
+    public Genero(int id, String nome) {
+        this.id = id;
         this.nome = nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     @Override
     public String toString() {
-        return "Genero{" + "px=" + pk + ", nome=" + nome + '}';
+        return "Genero{" + "px=" + id + ", nome=" + nome + '}';
     }
     
 }

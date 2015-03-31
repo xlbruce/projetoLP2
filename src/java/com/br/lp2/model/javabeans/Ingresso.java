@@ -1,4 +1,4 @@
-package com.br.lp2.model;
+package com.br.lp2.model.javabeans;
 
 import com.br.lp2.model.javabeans.Cliente;
 import java.io.Serializable;

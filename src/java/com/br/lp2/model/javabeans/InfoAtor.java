@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.lp2.model.javabeans;
-
-import com.br.lp2.model.Ator;
 
 
 public class InfoAtor {
  
 
-    private com.br.lp2.model.Ator ator;
+    private com.br.lp2.model.javabeans.Ator ator;
     private String papel, part;
     private int pk;
     
@@ -28,7 +21,13 @@ public class InfoAtor {
         this.part = part;
     }
 
-    public com.br.lp2.model.Ator getAtor() {
+    public InfoAtor(Ator ator, String papel, String part) {
+        this.ator = ator;
+        this.papel = papel;
+        this.part = part;
+    }
+
+    public com.br.lp2.model.javabeans.Ator getAtor() {
         return ator;
     }
 
