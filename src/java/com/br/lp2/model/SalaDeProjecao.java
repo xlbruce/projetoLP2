@@ -14,7 +14,7 @@ public class SalaDeProjecao implements Serializable {
 
     public enum Estados {
 
-        MANUTENCAO, OCUPADA, LIVRE
+        MANUTENCAO, LIVRE
     };
 
     /**
