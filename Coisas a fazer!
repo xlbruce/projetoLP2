@@ -5,3 +5,4 @@ Criar classe Poltrona
 Adicionar atributo 'sinopse' na classe Filme, e implementar as alterações no DAO
 
 Testar as classes DAO restantes
+ Criar classe usuário reaproveitando a classe cliente.
