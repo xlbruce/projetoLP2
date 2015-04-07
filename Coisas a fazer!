@@ -2,6 +2,9 @@
 Criar classe Poltrona 
  - Atributos: boolean Ocupada, enum Tipo (ESPECIAL, COMUM)
 
+Refatorar a classe SalaDeProjecao
+ - Substituir os atributos 'poltEsp', e 'lotacao' por um atributo Poltrona poltrona
+
 Adicionar atributo 'sinopse' na classe Filme, e implementar as alterações no DAO
 
 Testar as classes DAO restantes
