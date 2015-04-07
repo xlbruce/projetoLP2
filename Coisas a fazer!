@@ -1,0 +1,7 @@
+## Coisas a fazer - Projeto LP2 ##
+Criar classe Poltrona 
+ - Atributos: boolean Ocupada, enum Tipo (ESPECIAL, COMUM)
+
+Adicionar atributo 'sinopse' na classe Filme, e implementar as alterações no DAO
+
+Testar as classes DAO restantes
