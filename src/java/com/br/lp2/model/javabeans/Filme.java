@@ -2,6 +2,7 @@ package com.br.lp2.model.javabeans;
 
 import com.br.lp2.model.ListaDeAtores;
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 /**
  *
@@ -10,7 +11,7 @@ import java.io.Serializable;
  */
 public class Filme implements Serializable {
     
-    private String titulo, idioma;
+    private String titulo, idioma, sinopse;
     private TipoSituacao situacao;
     private ListaDeAtores listaAtores;
     private Distribuidora distribuidora;
@@ -23,22 +24,31 @@ public class Filme implements Serializable {
         CARTAZ, ESTREIA, LANCAMENTO
     }
     
-    public Filme(int id, String titulo, TipoSituacao situacao, String idioma,
-            ListaDeAtores listaAtores, Distribuidora distribuidora, 
+    public Filme(int pk, String titulo, TipoSituacao situacao, String idioma,
+            String sinopse, ListaDeAtores listaAtores, Distribuidora distribuidora, 
             Diretor diretor, int classificacao, int ano, int duracao) {
         this.titulo = titulo;
         this.situacao = situacao;
         this.idioma = idioma;
+        this.sinopse = sinopse;
         this.listaAtores = listaAtores;
         this.distribuidora = distribuidora;
         this.diretor = diretor;
         this.classificacao = classificacao;
         this.ano = ano;
-        this.id = id;
+        this.id = pk;
         this.duracao = duracao;
     }  
 
     //Getters e Setters
+
+    public String getSinopse() {
+        return sinopse;
+    }
+
+    public void setSinopse(String sinopse) {
+        this.sinopse = sinopse;
+    }
     
     /**
      * @param titulo the titulo to set
@@ -75,11 +85,6 @@ public class Filme implements Serializable {
         return listaAtores;
     }
 
-    public int getIdListaAtores(){
-    
-    return listaAtores.getPk();
-    
-    }
     /**
      * @param listaAtores the listaAtores to set
      */
@@ -132,14 +137,14 @@ public class Filme implements Serializable {
     /**
      * @return the id
      */
-    public int getPk() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setPk(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -177,6 +182,6 @@ public class Filme implements Serializable {
 
     @Override
     public String toString() {
-        return "Filme{" + "titulo=" + titulo + ", idioma=" + idioma + ", situacao=" + situacao + ", listaAtores=" + listaAtores + ", distribuidora=" + distribuidora + ", diretor=" + diretor + ", classificacao=" + classificacao + ", ano=" + ano + ", id=" + id + ", duracao=" + duracao + '}';
+        return "Filme{" + "titulo=" + titulo + ", idioma=" + idioma + ", situacao=" + situacao + ", listaAtores=" + listaAtores + ", distribuidora=" + distribuidora + ", diretor=" + diretor + ", classificacao=" + classificacao + ", ano=" + ano + ", pk=" + id + ", duracao=" + duracao + '}';
     }    
 }

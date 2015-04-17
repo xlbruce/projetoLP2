@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.lp2.model.DAO;
 
+import com.br.lp2.model.Ator;
 import com.br.lp2.model.ListaDeAtores;
+import com.br.lp2.model.javabeans.Filme;
 import java.util.ArrayList;
 
 /**
@@ -14,21 +11,35 @@ import java.util.ArrayList;
  */
 public interface ListaDeAtoresDAO {
 
+    //CRUD
+    //C - Create    
+    public boolean insertListaDeAtores(Ator a, Filme f);
 
-     //CRUD
-    //C - Create
-    
-    public boolean insertListaDeAtores(ListaDeAtores d);
-    
     //R - Read
-    public ArrayList<ListaDeAtores> readListaDeAtoress();
-    public ListaDeAtores readListaDeAtoresById(int id);
-    
+    public ListaDeAtores readListaDeAtoresByFilme(Filme f);
+
+    public ArrayList<Filme> readFilmeByAtor(Ator a);
+
     //U - Update
-    public boolean updateListaDeAtores(int id, ListaDeAtores d);
+    //Deixarei em branco por enquanto
     
     //D - Delete
     public boolean deleteListaDeAtores(int id);
-    public boolean deleteListaDeAtores(ListaDeAtores d);
-    
+
+    /**
+     * Remove um Ator da Lista de Atores de um dado Filme.
+     * @param f O Filme em questão
+     * @param a O Ator a ser apagado
+     * @return 
+     */
+    public boolean deleteAtorByFilme(Filme f, Ator a);
+
+    /**
+     * Remove todos os registros relacionados ao Filme da tabela "listadeatores".
+     * Deve ser usado quando um Filme for apagado do sistema.
+     * @param f Filme
+     * @return 
+     */
+    public boolean deleteFilme(Filme f);
+
 }

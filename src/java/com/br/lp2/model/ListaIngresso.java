@@ -1,6 +1,5 @@
 package com.br.lp2.model;
 
-import com.br.lp2.model.javabeans.Ingresso;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +14,11 @@ public class ListaIngresso {
     public ListaIngresso(){
         lista=new ArrayList<>();
     }
-    
+
+    public int getPk() {
+        return pk;
+    }    
+        
     public void addIngresso(Ingresso ingresso){
         lista.add(ingresso);
     }
@@ -26,10 +29,6 @@ public class ListaIngresso {
                 lista.remove(i);
             }
         }
-    }
-
-    public int getPk() {
-        return pk;
     }
     
     public void trocaIngresso(Ingresso i1, Ingresso i2){

@@ -1,6 +1,7 @@
 package com.br.lp2.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -9,28 +10,26 @@ import java.io.Serializable;
  */
 public class SalaDeProjecao implements Serializable {
 
-    private int pk, num, lotacao, poltEsp;
+    private int pk, num;
+    private ArrayList<Poltrona> poltronas;
     private Estados estado;
 
     public enum Estados {
-
-        MANUTENCAO, LIVRE
+        MANUTENCAO, OCUPADA, LIVRE
     };
 
     /**
      *
      * @param pk Primary key
      * @param num Número da sala
-     * @param lotacao Lotação da sala
-     * @param poltEsp Número de poltronas especiais
+     * @param poltronas As poltronas da Sala de Projeção
      * @param estado Estado em que a sala se encontra(<b>Manutenção</b>,
      * <b>Ocupada</b>, <b>Livre</b>)
      */
-    public SalaDeProjecao(int pk, int num, int lotacao, int poltEsp, Estados estado) {
+    public SalaDeProjecao(int pk, int num, ArrayList<Poltrona> poltronas, Estados estado) {
         this.pk = pk;
         this.num = num;
-        this.lotacao = lotacao;
-        this.poltEsp = poltEsp;
+        this.poltronas = poltronas;
         this.estado = estado;
     }
 
@@ -42,12 +41,8 @@ public class SalaDeProjecao implements Serializable {
         return num;
     }
 
-    public int getLotacao() {
-        return lotacao;
-    }
-
-    public int getPoltEsp() {
-        return poltEsp;
+    public ArrayList<Poltrona> getPoltronas() {
+        return poltronas;
     }
 
     public Estados getEstado() {
@@ -56,7 +51,7 @@ public class SalaDeProjecao implements Serializable {
 
     @Override
     public String toString() {
-        return "SalaDeProjecao{" + "numero=" + pk + '}';
+        return "SalaDeProjecao{" + "pk=" + pk + ", num=" + num + ", poltronas=" + poltronas + ", estado=" + estado + '}';
     }
-
+    
 }

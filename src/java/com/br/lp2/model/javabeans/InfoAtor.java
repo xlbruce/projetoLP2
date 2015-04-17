@@ -1,12 +1,13 @@
 package com.br.lp2.model.javabeans;
 
+import com.br.lp2.model.Ator;
+
 
 public class InfoAtor {
  
-
-    private com.br.lp2.model.javabeans.Ator ator;
+    private int id;
+    private com.br.lp2.model.Ator ator;
     private String papel, part;
-    private int pk;
     
     /**
      * 
@@ -14,20 +15,32 @@ public class InfoAtor {
      * @param papel Personagem representado
      * @param part Participação no filme (coadjuvante, principal ou figurante)
      */
-    public InfoAtor(int pk, Ator ator, String papel, String part) {
-        this.pk = pk;
+    public InfoAtor(com.br.lp2.model.Ator ator, String papel, String part) {
+        this.ator = ator;
+        this.papel = papel;
+        this.part = part;
+        this.id = 0;
+    }
+
+    /**
+     * 
+     * @param id
+     * @param ator
+     * @param papel
+     * @param part 
+     */
+    public InfoAtor(int id, Ator ator, String papel, String part) {
+        this.id = id;
         this.ator = ator;
         this.papel = papel;
         this.part = part;
     }
 
-    public InfoAtor(Ator ator, String papel, String part) {
-        this.ator = ator;
-        this.papel = papel;
-        this.part = part;
-    }
-
-    public com.br.lp2.model.javabeans.Ator getAtor() {
+    public int getId() {
+        return id;
+    }    
+    
+    public com.br.lp2.model.Ator getAtor() {
         return ator;
     }
 
@@ -38,15 +51,11 @@ public class InfoAtor {
     public String getPart() {
         return part;
     }
-    
-    public int getPk(){
-        return pk;
-    }
 
     @Override
     public String toString() {
-        return "InfoAtor{" + "ator=" + ator + ", papel=" + papel + ", part=" + part + '}';
-    }
+        return "InfoAtor{" + "id=" + id + ", ator=" + ator + ", papel=" + papel + ", part=" + part + '}';
+    }    
 }
   
 

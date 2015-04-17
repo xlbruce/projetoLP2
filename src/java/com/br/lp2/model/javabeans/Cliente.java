@@ -25,13 +25,17 @@ public class Cliente implements Serializable {
         this.nome = nome;
         this.nascimento = nascimento;
         this.tipo = tipo;
-        
+
     }
 
     public Cliente(int pk, String nome, Date nascimento) {
         this.pk = pk;
         this.nome = nome;
-        this.nascimento = nascimento;
+        if (nascimento != null) {
+            this.nascimento = nascimento;
+        } else {
+            this.nascimento = new Date();
+        }
         this.tipo = Especiais.GERAL;
     }
 

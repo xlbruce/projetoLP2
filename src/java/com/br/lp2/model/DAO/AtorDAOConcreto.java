@@ -1,6 +1,6 @@
 package com.br.lp2.model.DAO;
 
-import com.br.lp2.model.javabeans.Ator;
+import com.br.lp2.model.Ator;
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.Date;
@@ -133,7 +133,7 @@ public class AtorDAOConcreto implements AtorDAO {
             ps.setString(2, a.getNacionalidade());
             ps.setDate(3, (Date) a.getNascimento()); //Deve-se fazer o cast para java.sql.Date
             ps.setInt(4, id);
-            if(ps.executeUpdate() != 0) { //Verifica se foi atualizado
+            if(ps.executeUpdate() > 0) { //Verifica se foi atualizado
                 return true;
             }
         } catch (Exception e) {

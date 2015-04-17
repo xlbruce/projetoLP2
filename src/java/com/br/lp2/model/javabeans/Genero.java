@@ -1,42 +1,35 @@
 package com.br.lp2.model.javabeans;
 
-import java.io.Serializable;
-
-/**
- *
- * @author Gilson da Silva
- * @version 1.0
- */
-public class Genero implements Serializable {
+public class Genero  {
     
-    private transient int id;
+    private transient int pk;
     private String nome;
 
     public Genero(String nome) {
         this.nome = nome;
     }
-    
+
     /**
      * Cria uma instancia com chave primária.
-     * @param id
+     * @param pk Primary Key
      * @param nome 
      */
-    public Genero(int id, String nome) {
-        this.id = id;
+    public Genero(int pk, String nome) {
+        this.pk = pk;
         this.nome = nome;
     }
-
-    public int getId() {
-        return id;
+    
+    public int getPk() {
+        return pk;
     }
 
     public String getNome() {
         return nome;
     }
-
+    
     @Override
     public String toString() {
-        return "Genero{" + "px=" + id + ", nome=" + nome + '}';
+        return "Genero{" + "px=" + pk + ", nome=" + nome + '}';
     }
     
 }

@@ -1,8 +1,10 @@
 package com.br.lp2.model.DAO;
 
+import com.br.lp2.model.Ator;
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
 import com.br.lp2.model.ListaDeAtores;
-import java.sql.Array;
+import com.br.lp2.model.javabeans.Filme;
+import com.br.lp2.model.javabeans.InfoAtor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,71 +27,47 @@ public class ListaDeAtoresDAOConcreto implements ListaDeAtoresDAO {
     }
 
     @Override
-    public boolean insertListaDeAtores(ListaDeAtores d) {
-
-        boolean resultado = false;
-        String sql = "INSERT INTO funcionario (id_filme,id_ator) VALUES (?,?)";
+    public boolean insertListaDeAtores(Ator a, Filme f) {
+        String sql = "INSERT INTO listadeatores (id_filme, id_ator) VALUES (?,?)";
         try {
             ps = connection.prepareStatement(sql);
-            ps.setInt(1, d.getFilme());
-            ps.setArray(2, (Array) d.getAtores());
-            ps.execute();
-            resultado = true;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return resultado;
-    }
-
-    @Override
-    public ArrayList<ListaDeAtores> readListaDeAtoress() {
-        ArrayList<ListaDeAtores> lista = new ArrayList<>();
-        String sql = "SELECT * FROM listadeatores";
-        try {
-            ps = connection.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                lista.add(new ListaDeAtores(rs.getArray("id_ator"), rs.getInt("id"), rs.getInt("id_filme")));
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return lista;
-    }
-
-    @Override
-    public ListaDeAtores readListaDeAtoresById(int id) {
-String sql = "SELECT * FROM listaingresso WHERE id = ?";
-
-        try {
-            ps = connection.prepareStatement(sql);
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-            rs.next();
-            return new ListaDeAtores(rs.getArray("id_ator"),rs.getInt("id_filme"),rs.getInt("id"));
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
-
-    
-
-    @Override
-    public boolean updateListaDeAtores(int id, ListaDeAtores d) {
-
-        String sql = "UPDATE listadeatores SET ingresso=?";
-        try {
-            ps = connection.prepareStatement(sql);
-            ps.setArray(1, (Array) d.getLista());
-            if (ps.executeUpdate() != 0) {
+            ps.setInt(1, a.getId());
+            ps.setInt(2, f.getId());
+            if (ps.execute()) {
                 return true;
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return false;
+    }
+
+    //FIX ME
+    @Override
+    public ListaDeAtores readListaDeAtoresByFilme(Filme f) {
+        String sql = "SELECT * FROM listadeatores INNER JOIN infoator ON "
+                + "listadeatores.id_filme = ? AND "
+                + "listadeatores.id_ator = infoator.id_ator JOIN ator ON "
+                + "infoator.id_ator = ator.id;";
+        ArrayList<InfoAtor> atores = new ArrayList<>();
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, f.getId());
+            rs = ps.executeQuery();
+            
+            Ator atorTmp;
+            while (rs.next()) {
+                atorTmp = new Ator(rs.getInt("id_ator"), rs.getString("nome"), 
+                        rs.getString("nacionalidade"), rs.getDate("nascimento"));
+                atores.add(new InfoAtor(rs.getInt("id_ator"), atorTmp, 
+                        rs.getString("papel"), rs.getString("part")));  
+            }
+            return new ListaDeAtores(rs.getInt("id"), atores);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }        
+        return null;
     }
 
     @Override
@@ -107,30 +85,21 @@ String sql = "SELECT * FROM listaingresso WHERE id = ?";
             System.out.println(ex.getMessage());
         }
         return false;
-
     }
 
     @Override
-    public boolean deleteListaDeAtores(ListaDeAtores d) {
-
-        String sql = "DELETE FROM listadeatores WHERE id = ?";
-
-        try {
-            ps = connection.prepareStatement(sql);
-            ps.setInt(1, d.getPk());
-            if (ps.execute()) {
-                return true;
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return false;
-    }
-
-    @Override
-    public ListaDeAtores readListaDeAtoresByNome(String nome) {
+    public ArrayList<Filme> readFilmeByAtor(Ator a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+
+    @Override
+    public boolean deleteAtorByFilme(Filme f, Ator a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deleteFilme(Filme f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

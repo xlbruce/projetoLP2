@@ -23,7 +23,7 @@ public interface SessaoDAO {
     //R - Read
     public ArrayList<Sessao> readSessaos();
     public Sessao readSessaoById(int id);
-//    public Sessao readSessaoByData(String nome);
+    public Sessao readSessaoByNome(String nome);
     
     //U - Update
     public boolean updateSessao(int id, Sessao d);

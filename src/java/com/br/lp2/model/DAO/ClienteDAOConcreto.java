@@ -3,6 +3,7 @@ package com.br.lp2.model.DAO;
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
 import com.br.lp2.model.javabeans.Cliente;
 import com.br.lp2.model.javabeans.Cliente.Especiais;
+import com.br.lp2.model.javabeans.Filme;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -48,14 +49,14 @@ public class ClienteDAOConcreto implements ClienteDAO {
     @Override
     public ArrayList<Cliente> readClientes() {
         String sql = "SELECT * FROM cliente";
-        ArrayList<Cliente> clientes = null;
+        ArrayList<Cliente> clientes = new ArrayList<>();
 
         try {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 clientes.add(new Cliente(rs.getInt("id"), rs.getString("nome"),
-                        rs.getDate("nascimento"), (Especiais) rs.getObject("tipo")));
+                        rs.getDate("nascimento"), Especiais.valueOf(rs.getString("tipo"))));
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -104,13 +105,12 @@ public class ClienteDAOConcreto implements ClienteDAO {
 
     @Override
     public boolean updateCliente(int id, Cliente c) {
-        String sql = "UPDATE cliente SET nome = ?, nascimento = ?, tipo = ? WHERE id = ?";
+        String sql = "UPDATE cliente SET nome = ?, nascimento = ?, tipo = ?";
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, c.getNome());
             ps.setDate(2, new java.sql.Date(c.getNascimento().getTime()));
             ps.setObject(3, (Especiais) c.getTipo());
-            ps.setInt(4, id);
             if (ps.executeUpdate() != 0) {
                 return true;
             }

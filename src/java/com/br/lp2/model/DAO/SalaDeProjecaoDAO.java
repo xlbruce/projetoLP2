@@ -18,7 +18,7 @@ public interface SalaDeProjecaoDAO {
     //R - Read
     public ArrayList<SalaDeProjecao> readSalaDeProjecoes();
     public SalaDeProjecao readSalaDeProjecaoById(int id);
-    public SalaDeProjecao readSalaDeProjecaoByNum(int num);
+    public SalaDeProjecao readSalaDeProjecaoByNome(String nome);
     
     //U - Update
     public boolean updateSalaDeProjecao(int id, SalaDeProjecao d);

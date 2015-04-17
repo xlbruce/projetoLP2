@@ -1,7 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.br.lp2.model.DAO;
 
-import com.br.lp2.model.javabeans.Ingresso;
-import com.br.lp2.model.javabeans.Cliente;
+import com.br.lp2.model.Ingresso;
 import java.util.ArrayList;
 
 /**
@@ -10,29 +14,23 @@ import java.util.ArrayList;
  */
 public interface IngressoDAO {
 
-
-     //CRUD
+    //CRUD
     //C - Create
-    
     public boolean insertIngresso(Ingresso d);
-    public boolean insertIngresso(int numero, boolean inteira, Cliente.Especiais tipo);
     
     //R - Read
     public ArrayList<Ingresso> readIngressos();
-    public Ingresso readIngressoByPk(int pk);
-    public Ingresso readIngressoByNum(int num);
+
     public Ingresso readIngressoByInteira(Boolean inteira);
-    public Ingresso readIngressoByTipo(Cliente.Especiais tipo);
-    
+            
+    public Ingresso readIngressoById(int id);
+
     //U - Update
     public boolean updateIngresso(int id, Ingresso d);
-    
+
     //D - Delete
     public boolean deleteIngresso(int id);
+
     public boolean deleteIngresso(Ingresso d);
-    
+
 }
-
-
-
-

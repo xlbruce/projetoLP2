@@ -1,6 +1,6 @@
 package com.br.lp2.model.DAO;
 
-import com.br.lp2.model.javabeans.Ator;
+import com.br.lp2.model.Ator;
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
 import com.br.lp2.model.javabeans.InfoAtor;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author André Lucas
  */
-public class InfoAtorDAOConcreto implements InfoAtorDAO{
+public class InfoAtorDAOConcreto implements InfoAtorDAO {
 
     private Connection connection;
     private ResultSet rs;
@@ -23,7 +23,7 @@ public class InfoAtorDAOConcreto implements InfoAtorDAO{
         ConnectionFactory cf = new ConnectionFactory();
         connection = cf.getConnection("derby");
     }
-    
+
     @Override
     public boolean insertInfoAtor(InfoAtor i) {
         String sql = "INSERT INTO ator (papel, part, id_ator) "
@@ -52,7 +52,7 @@ public class InfoAtorDAOConcreto implements InfoAtorDAO{
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                infoAtores.add(new InfoAtor(rs.getInt("id"), (Ator)rs.getObject("id_ator"), rs.getString("papel"),
+                infoAtores.add(new InfoAtor(rs.getInt("id"), (Ator) rs.getObject("id_ator"), rs.getString("papel"),
                         rs.getString("part")));
             }
         } catch (Exception e) {
@@ -70,16 +70,16 @@ public class InfoAtorDAOConcreto implements InfoAtorDAO{
             ps.setInt(1, id);
             rs = ps.executeQuery();
             rs.next();
-            return new InfoAtor(rs.getInt("id"), (Ator)rs.getObject("id_ator"), rs.getString("papel"),
-                        rs.getString("part"));
+            return new InfoAtor(rs.getInt("id"), (Ator) rs.getObject("id_ator"), rs.getString("papel"),
+                    rs.getString("part"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
-    
+
     @Override
-    public InfoAtor readInfoAtorByAtor(Ator ator){
+    public InfoAtor readInfoAtorByAtor(Ator ator) {
         String sql = "SELECT * FROM infoator WHERE id_ator = ?";
 
         try {
@@ -87,8 +87,8 @@ public class InfoAtorDAOConcreto implements InfoAtorDAO{
             ps.setObject(1, ator);
             rs = ps.executeQuery();
             rs.next();
-            return new InfoAtor(rs.getInt("id"), (Ator)rs.getObject("id_ator"), rs.getString("papel"),
-                        rs.getString("part"));
+            return new InfoAtor(rs.getInt("id"), (Ator) rs.getObject("id_ator"), rs.getString("papel"),
+                    rs.getString("part"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -101,28 +101,46 @@ public class InfoAtorDAOConcreto implements InfoAtorDAO{
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString (1, papel);
+            ps.setString(1, papel);
             rs = ps.executeQuery();
             rs.next();
-            return new InfoAtor(rs.getInt("id"), (Ator)rs.getObject("id_ator"), rs.getString("papel"),
-                        rs.getString("part"));
+            return new InfoAtor(rs.getInt("id"), (Ator) rs.getObject("id_ator"), rs.getString("papel"),
+                    rs.getString("part"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
-    
+
+    @Override
+    public InfoAtor readInfoAtorByNome(String nome) {
+        String sql = "SELECT * FROM infoator WHERE nome = ?";
+
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, nome);
+            rs = ps.executeQuery();
+            rs.next();
+            return new InfoAtor(rs.getInt("id"), (Ator) rs.getObject("id_ator"),
+                    rs.getString("papel"),
+                    rs.getString("part"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     @Override
     public InfoAtor readInfoAtorByPart(String part) {
         String sql = "SELECT * FROM infoator WHERE part = ?";
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString (1, part);
+            ps.setString(1, part);
             rs = ps.executeQuery();
             rs.next();
-            return new InfoAtor(rs.getInt("id"), (Ator)rs.getObject("id_ator"), rs.getString("papel"),
-                        rs.getString("part"));
+            return new InfoAtor(rs.getInt("id"), (Ator) rs.getObject("id_ator"), rs.getString("papel"),
+                    rs.getString("part"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -169,7 +187,7 @@ public class InfoAtorDAOConcreto implements InfoAtorDAO{
 
         try {
             ps = connection.prepareStatement(sql);
-            ps.setInt(1, i.getPk());
+            ps.setInt(1, i.getId());
             if (ps.execute()) {
                 return true;
             }
@@ -177,5 +195,5 @@ public class InfoAtorDAOConcreto implements InfoAtorDAO{
             System.out.println(ex.getMessage());
         }
         return false;
-    } 
+    }
 }

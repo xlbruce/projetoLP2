@@ -5,7 +5,7 @@
  */
 package com.br.lp2.model.DAO;
 import com.br.lp2.model.ConnectionFactory.ConnectionFactory;
-import com.br.lp2.model.javabeans.Ingresso;
+import com.br.lp2.model.Ingresso;
 import com.br.lp2.model.ListaIngresso;
 import com.br.lp2.model.javabeans.Cliente.Especiais;
 import java.sql.Array;

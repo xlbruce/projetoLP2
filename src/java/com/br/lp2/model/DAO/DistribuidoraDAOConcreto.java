@@ -62,7 +62,7 @@ public class DistribuidoraDAOConcreto implements DistribuidoraDAO {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();            
             while(rs.next()) {
-                distribuidoras.add(new Distribuidora(rs.getInt("pk"), rs.getString("nome")));
+                distribuidoras.add(new Distribuidora(rs.getInt("id"), rs.getString("nome")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
