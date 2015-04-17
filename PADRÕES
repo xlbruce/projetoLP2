@@ -1,0 +1,32 @@
+### Este documento tem por objetivo definir padrões para nomes de variáveis e arquivos do projeto ###
+
+# Java #
+ - Arquivos:
+  - Documentar cada arquivo criado, com breve descrição dos métodos e objetivos de uma classe.
+  - Incluir o nome do autor no inicio de cada arquivo (padrão JavaDoc).
+  
+ - Variáveis:
+  - Camel case: variáveis iniciam com letra minuscula. Em caso de variaveis com nomes compostos, a partir da segunda parte do nome, deve-se usar Uppercase.
+  - Não deve-se usar acentuação e a cedilha.
+  - Sempre usar mnemônicos (nomes que indicam o significado do campo/variável). Não usar nomes sem sentido por mais óbvio que o código pareça ser.
+  
+  Exemplos: String nomeDoAluno;
+            int idade;
+            
+  - Atributos de classe:
+    - Campos que indicam um identificador único do objeto, devem ser nomeados como "id". E "pk" se representar um identificador de uma tabela no banco de dados.
+    
+    Exemplos:
+    class Pessoa {
+      int id;
+      String nome, sobrenome;
+      {...}
+    }
+    
+  - Organização: sempre manter o código limpo e indentado.
+  
+  # HTML #
+   - Arquivos:
+    - Nomes de arquivos devem ser todos em letra minúscula, sem acentos e cedilha. Espaços devem ser substituidos por "_".
+    
+    Exemplo: menu_principal.html
