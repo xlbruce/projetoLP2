@@ -58,7 +58,7 @@ public class AtorDAOConcreto implements AtorDAO {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                atores.add(new Ator(rs.getString("nome"),
+                atores.add(new Ator(rs.getInt("id"), rs.getString("nome"),
                         rs.getString("nacionalidade"), rs.getDate("nascimento")));
             }
         } catch (Exception e) {

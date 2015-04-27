@@ -54,7 +54,7 @@ insert into listadeatores(id_filme,id_ator) values (1,1);
 
 
 -- Cria a tabela Filme e a inicializa com alguns valores
-create table filme(id int not null primary key generated always as identity(start with 1, increment by 1), titulo varchar(20),idioma varchar(20),situacao varchar(20), id_listadeatores int, id_distribuidora int, id_diretor int, classificacao int, ano int , duracao int);
+create table filme(id int not null primary key generated always as identity(start with 1, increment by 1), titulo varchar(20),idioma varchar(20),situacao varchar(20), id_listadeatores int, id_distribuidora int, id_diretor int, classificacao int, ano int , duracao int, sinopse varchar(700));
 
 alter table filme add foreign key(id_listadeatores) references listadeatores(id);
 
