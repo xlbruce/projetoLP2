@@ -1,12 +1,12 @@
 package com.br.lp2.model.javabeans;
 
-import com.br.lp2.model.Ator;
+import com.br.lp2.model.javabeans.Ator;
 
 
 public class InfoAtor {
  
     private int id;
-    private com.br.lp2.model.Ator ator;
+    private Ator ator;
     private String papel, part;
     
     /**
@@ -15,7 +15,7 @@ public class InfoAtor {
      * @param papel Personagem representado
      * @param part Participação no filme (coadjuvante, principal ou figurante)
      */
-    public InfoAtor(com.br.lp2.model.Ator ator, String papel, String part) {
+    public InfoAtor(Ator ator, String papel, String part) {
         this.ator = ator;
         this.papel = papel;
         this.part = part;
@@ -40,7 +40,7 @@ public class InfoAtor {
         return id;
     }    
     
-    public com.br.lp2.model.Ator getAtor() {
+    public Ator getAtor() {
         return ator;
     }
 

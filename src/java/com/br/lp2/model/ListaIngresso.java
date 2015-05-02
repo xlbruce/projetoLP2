@@ -1,6 +1,7 @@
 package com.br.lp2.model;
 
 import java.util.ArrayList;
+import com.br.lp2.model.javabeans.Ingresso;
 
 /**
  *

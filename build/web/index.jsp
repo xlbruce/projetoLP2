@@ -6,7 +6,7 @@
 
 <%@page import="com.br.lp2.model.ListaDeAtores"%>
 <%@page import="java.util.Date"%>
-<%@page import="com.br.lp2.model.Ator"%>
+<%@page import="com.br.lp2.model.javabeans.Ator"%>
 <%@page import="com.br.lp2.model.javabeans.Filme"%>
 <%@page import="com.br.lp2.model.javabeans.Distribuidora"%>
 <%@page import="com.br.lp2.model.javabeans.Diretor"%>

@@ -1,7 +1,7 @@
 package com.br.lp2.model.DAO;
 
 import java.util.ArrayList;
-import com.br.lp2.model.Ator;
+import com.br.lp2.model.javabeans.Ator;
 
 /**
  *

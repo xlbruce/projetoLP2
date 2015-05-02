@@ -2,15 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/D:/Users/André%20Lucas/Documents/GitHub/projetoLP2/src/java/com/br/lp2/model/DAO/GeneroDAOConcreto.java</file>
-            <file>file:/D:/Users/André%20Lucas/Documents/GitHub/projetoLP2/src/java/com/br/lp2/model/DAO/ListaIngressoDAOConcreto.java</file>
-            <file>file:/D:/Users/André%20Lucas/Documents/GitHub/projetoLP2/src/java/com/br/lp2/model/DAO/ListaDeAtoresDAOConcreto.java</file>
-            <file>file:/D:/Users/André%20Lucas/Documents/GitHub/projetoLP2/src/java/com/br/lp2/model/DAO/FilmeDAOConcreto.java</file>
+            <file>file:/D:/Users/André%20Lucas/Documents/projetoLP2/web/manutencao/salas/manter_sala.jsp</file>
+            <file>file:/D:/Users/André%20Lucas/Documents/projetoLP2/web/manutencao/menu_manutencao.html</file>
         </group>
->>>>>>> origin/master
     </open-files>
 </project-private>

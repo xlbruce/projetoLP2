@@ -1,6 +1,6 @@
 package com.br.lp2.model.DAO;
 
-import com.br.lp2.model.Ator;
+import com.br.lp2.model.javabeans.Ator;
 import com.br.lp2.model.ListaDeAtores;
 import com.br.lp2.model.javabeans.Filme;
 import java.util.ArrayList;

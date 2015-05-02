@@ -1,6 +1,7 @@
 package com.br.lp2.model;
 
 import com.br.lp2.model.javabeans.InfoAtor;
+import com.br.lp2.model.javabeans.Ator;
 import java.io.Serializable;
 import java.util.ArrayList;
 
