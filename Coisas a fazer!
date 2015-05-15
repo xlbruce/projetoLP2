@@ -2,3 +2,5 @@
 
 Testar as classes DAO restantes
  Criar classe usuário reaproveitando a classe cliente.
+
+Conferir o SQL de todas os DAOs na função update();
